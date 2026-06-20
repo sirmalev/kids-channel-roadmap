@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎬 Kids Channel Roadmap — Shimon 🤖🕶️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0c0c1a;
+      --card: #13132b;
+      --border: #2a2a5a;
+      --pink: #ff4d94;
+      --purple: #a855f7;
+      --blue: #3b82f6;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --yellow: #facc15;
+      --orange: #fb923c;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+
+    body {
+      font-family: 'Rubik', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── Animated BG ─── */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-orb:nth-child(1) { width: 500px; height: 500px; background: var(--pink); top: -100px; left: -100px; animation: float1 12s ease-in-out infinite; }
+    .bg-orb:nth-child(2) { width: 400px; height: 400px; background: var(--blue); bottom: -80px; right: -80px; animation: float2 15s ease-in-out infinite; }
+    .bg-orb:nth-child(3) { width: 300px; height: 300px; background: var(--yellow); bottom: 40%; left: 10%; animation: float3 10s ease-in-out infinite; }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(80px, 60px); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-60px, -80px); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, -40px) scale(1.2); }
+    }
+
+    /* ─── Layout ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; position: relative; z-index: 1; }
+
+    /* ─── Hero ─── */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    .hero-emoji { font-size: 4rem; display: block; margin-bottom: 0.5rem; animation: bounce 2s ease-in-out infinite; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--yellow), var(--orange), var(--pink), var(--purple), var(--blue));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 6s ease-in-out infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--purple);
+    }
+
+    /* ─── Stats Bar ─── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.75rem;
+      margin: 2rem 0 3rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 0.75rem;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      display: block;
+    }
+    .stat-card .lbl {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .stat-card:nth-child(1) .num { color: var(--yellow); }
+    .stat-card:nth-child(2) .num { color: var(--cyan); }
+    .stat-card:nth-child(3) .num { color: var(--green); }
+    .stat-card:nth-child(4) .num { color: var(--pink); }
+    .stat-card:nth-child(5) .num { color: var(--purple); }
+
+    /* ─── Phase Timeline ─── */
+    .phases { position: relative; }
+    .phases::before {
+      content: '';
+      position: absolute;
+      right: 24px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--pink), var(--purple), var(--blue), var(--cyan), var(--green));
+      border-radius: 3px;
+    }
+
+    .phase {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-right: 4rem;
+    }
+    .phase:last-child { margin-bottom: 0; }
+
+    .phase-dot {
+      position: absolute;
+      right: 13px;
+      top: 8px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 3px solid var(--card);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+    }
+    .phase:nth-child(1) .phase-dot { background: var(--pink); }
+    .phase:nth-child(2) .phase-dot { background: var(--purple); }
+    .phase:nth-child(3) .phase-dot { background: var(--blue); }
+    .phase:nth-child(4) .phase-dot { background: var(--cyan); }
+    .phase:nth-child(5) .phase-dot { background: var(--green); }
+
+    .phase-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .phase-card:hover {
+      border-color: rgba(168, 85, 247, 0.4);
+      transform: translateX(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .phase-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .phase:nth-child(1) .phase-icon { background: rgba(255,77,148,0.15); }
+    .phase:nth-child(2) .phase-icon { background: rgba(168,85,247,0.15); }
+    .phase:nth-child(3) .phase-icon { background: rgba(59,130,246,0.15); }
+    .phase:nth-child(4) .phase-icon { background: rgba(34,211,238,0.15); }
+    .phase:nth-child(5) .phase-icon { background: rgba(52,211,153,0.15); }
+
+    .phase-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .phase-subtitle {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ─── Tasks ─── */
+    .tasks { list-style: none; }
+    .tasks li {
+      position: relative;
+      padding: 0.65rem 1.8rem 0.65rem 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .tasks li:last-child { border-bottom: none; }
+    .tasks li::before {
+      content: '✦';
+      position: absolute;
+      right: 0;
+      top: 0.65rem;
+      font-size: 0.7rem;
+    }
+    .phase:nth-child(1) .tasks li::before { color: var(--pink); }
+    .phase:nth-child(2) .tasks li::before { color: var(--purple); }
+    .phase:nth-child(3) .tasks li::before { color: var(--blue); }
+    .phase:nth-child(4) .tasks li::before { color: var(--cyan); }
+    .phase:nth-child(5) .tasks li::before { color: var(--green); }
+
+    .task-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      margin-right: 0.3rem;
+    }
+    .tag-idea { background: rgba(251,191,36,0.15); color: var(--yellow); }
+    .tag-build { background: rgba(168,85,247,0.15); color: var(--purple); }
+    .tag-code { background: rgba(59,130,246,0.15); color: var(--blue); }
+    .tag-later { background: rgba(148,163,184,0.15); color: var(--muted); }
+    .tag-urgent { background: rgba(255,77,148,0.15); color: var(--pink); }
+
+    /* ─── Tools Grid ─── */
+    .tools-section { margin: 3rem 0; }
+    .tools-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    .tool-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 0.75rem;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .tool-item:hover {
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-3px);
+    }
+    .tool-item .emoji { font-size: 2rem; display: block; margin-bottom: 0.3rem; }
+    .tool-item .name { font-size: 0.8rem; font-weight: 600; }
+    .tool-item .desc { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ─── Flow ─── */
+    .flow-section { margin: 3rem 0; }
+    .flow-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .flow-step .emoji { font-size: 1.2rem; }
+    .flow-arrow {
+      font-size: 1.3rem;
+      color: var(--muted);
+    }
+    .flow-step.shimon { border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.08); }
+    .flow-step.you { border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08); }
+    .flow-step.ai { border-color: rgba(34,211,238,0.4); background: rgba(34,211,238,0.08); }
+
+    /* ─── Footer ─── */
+    .footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .footer .signature {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .footer .signature strong { color: var(--purple); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem 3rem; }
+      .phase { padding-right: 3rem; }
+      .phases::before { right: 16px; }
+      .phase-dot { right: 7px; width: 20px; height: 20px; }
+      .flow { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+  <div class="bg-orb"></div>
+
+  <div class="container">
+
+    <!-- ─── Hero ─── -->
+    <div class="hero">
+      <span class="hero-emoji">🎬</span>
+      <h1>Kids Cartoon Shorts Roadmap</h1>
+      <p>ערוץ יוטיוב שורטס מצוירים — מלמד, משעשע, צבעוני<br>לגילאי 2–4 🤖🎨</p>
+      <span class="tagline">🚀 בנה על־ידי Shimon &middot; סוכן AI שלך</span>
+    </div>
+
+    <!-- ─── Stats ─── -->
+    <div class="stats-bar">
+      <div class="stat-card"><span class="num">5</span><span class="lbl">שלבים</span></div>
+      <div class="stat-card"><span class="num">7</span><span class="lbl">כלים משולבים</span></div>
+      <div class="stat-card"><span class="num">1</span><span class="lbl">דקה / שורטס</span></div>
+      <div class="stat-card"><span class="num">6</span><span class="lbl">שורטס / יום</span></div>
+      <div class="stat-card"><span class="num">∞</span><span class="lbl">פוטנציאל</span></div>
+    </div>
+
+    <!-- ─── Phases ─── -->
+    <div class="phases">
+
+      <!-- Phase 1 -->
+      <div class="phase">
+        <div class="phase-dot">1</div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-icon">🎨</div>
+            <div>
+              <div class="phase-title">עיצוב וקונספט</div>
+              <div class="phase-subtitle">להמציא את העולם — אתה + אני</div>
+            </div>
+          </div>
+          <ul class="tasks">
+            <li><span class="task-tag tag-idea">קונספט</span> נושא מרכזי — חיות, צבעים, מספרים, או סיפור?</li>
+            <li><span class="task-tag tag-idea">דמויות</span> דמות/ות ראשיות — שם, מראה, אישיות</li>
+            <li><span class="task-tag tag-idea">סטייל</span> סגנון ויזואלי — 2D רך, 3D צעצועי, פלאשק</li>
+            <li><span class="task-tag tag-idea">פלטה</span> לוח צבעים — בהיר, מנוגד, מושך קטנטנים</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase">
+        <div class="phase-dot">2</div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-icon">⚙️</div>
+            <div>
+              <div class="phase-title">צינור הפקה — AI</div>
+              <div class="phase-subtitle">שמעון מייצר את כל חומרי הגלם</div>
+            </div>
+          </div>
+          <ul class="tasks">
+            <li><span class="task-tag tag-build">References</span> יצירת דמויות כ-Reference Elements ב-Higgsfield לחזרתיות מושלמת</li>
+            <li><span class="task-tag tag-build">תמונות</span> יצירת סטים של סצנות (Nano Banana Pro / GPT Image 2)</li>
+            <li><span class="task-tag tag-build">אנימציה</span> הנפשת סצנות עם Kling 3.0 / Seedance 2.0</li>
+            <li><span class="task-tag tag-build">קריינות</span> הקלטת טקסטים בקול ילדותי/חם דרך ElevenLabs</li>
+            <li><span class="task-tag tag-build">מוזיקה</span> יצירת מנגינות קליטות — music_generate</li>
+            <li><span class="task-tag tag-build">אפקטים</span> סאונד אפקטים כיפיים</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase">
+        <div class="phase-dot">3</div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-icon">✂️</div>
+            <div>
+              <div class="phase-title">עריכה סופית</div>
+              <div class="phase-subtitle">מחברים הכל לקליפ מוגמר</div>
+            </div>
+          </div>
+          <ul class="tasks">
+            <li><span class="task-tag tag-urgent">⬇️ הורד</span> <strong>Palmier Pro</strong> מ-palmier.io (macOS, חינם)</li>
+            <li><span class="task-tag tag-code">חיבור</span> לחבר MCP — אני אראה את הטיימליין ואערוך</li>
+            <li><span class="task-tag tag-code">עריכה</span> גזירה, סידור, טרנזישנים, טקסטים, טיימינג — אני דרך MCP</li>
+            <li><span class="task-tag tag-build">ייצוא</span> MP4 (H.264) מוכן לפרסום</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase">
+        <div class="phase-dot">4</div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-icon">📡</div>
+            <div>
+              <div class="phase-title">פרסום אוטומטי</div>
+              <div class="phase-subtitle">YouTube API — שורטס עף למעלה</div>
+            </div>
+          </div>
+          <ul class="tasks">
+            <li><span class="task-tag tag-urgent">⬆️ הרשמה</span> Google Cloud Console — פרויקט חדש</li>
+            <li><span class="task-tag tag-code">OAuth</span> הרשאת גישה — אני אגיד לך מה ללחוץ</li>
+            <li><span class="task-tag tag-code">אוטומציה</span> סקריפט העלאה אוטומטי via YouTube API</li>
+            <li><span class="task-tag tag-code">לוח זמנים</span> קביעת תדירות פרסום (1–3 שורטס ליום)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="phase">
+        <div class="phase-dot">5</div>
+        <div class="phase-card">
+          <div class="phase-header">
+            <div class="phase-icon">🚀</div>
+            <div>
+              <div class="phase-title">צמיחה והתרחבות</div>
+              <div class="phase-subtitle">להפוך את זה למכונה</div>
+            </div>
+          </div>
+          <ul class="tasks">
+            <li><span class="task-tag tag-later">הרחבה</span> טיקטוק, אינסטגרים Reels במקביל</li>
+            <li><span class="task-tag tag-later">ניתוח</span> אנליטיקס — מה עובד ומה לא</li>
+            <li><span class="task-tag tag-later">עונות</span> סדרות בתוך הערוץ</li>
+            <li><span class="task-tag tag-later">ליין</span> דמויות חדשות, נושאים חדשים, שיתופי פעולה</li>
+            <li><span class="task-tag tag-later">מנטיזציה</span> כשתהיה מספיק תנועה</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Integration Flow ─── -->
+    <div class="flow-section">
+      <h2>⚡ איך עובד השילוב</h2>
+      <div class="flow">
+        <div class="flow-step you"><span class="emoji">🧑‍💻</span> אתה — רעיונות</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step shimon"><span class="emoji">🤖</span> Shimon — תוכן + MCP</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step ai"><span class="emoji">🎬</span> Palmier Pro — עריכה</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step you"><span class="emoji">📺</span> YouTube Shorts</div>
+      </div>
+      <p style="text-align:center; color: var(--muted); font-size: 0.8rem; margin-top: 0.8rem;">
+        🤖 Shimon יוצר &nbsp;·&nbsp; 🎬 Palmier עורך &nbsp;·&nbsp; 📡 YouTube מפרסם
+      </p>
+    </div>
+
+    <!-- ─── Tools ─── -->
+    <div class="tools-section">
+      <h2>🧰 ארגז הכלים</h2>
+      <div class="tools-grid">
+        <div class="tool-item"><span class="emoji">🖼️</span><span class="name">Higgsfield</span><span class="desc">תמונות + Reference Elements</span></div>
+        <div class="tool-item"><span class="emoji">🎞️</span><span class="name">Kling 3.0</span><span class="desc">אנימציה מתמונה</span></div>
+        <div class="tool-item"><span class="emoji">🎙️</span><span class="name">ElevenLabs</span><span class="desc">קריינות מקצועית</span></div>
+        <div class="tool-item"><span class="emoji">🎵</span><span class="name">music_generate</span><span class="desc">מנגינות מקוריות</span></div>
+        <div class="tool-item"><span class="emoji">✂️</span><span class="name">Palmier Pro</span><span class="desc">עורך וידאו AI + MCP</span></div>
+        <div class="tool-item"><span class="emoji">💻</span><span class="name">ffmpeg</span><span class="desc">עריכות בסיסיות גיבוי</span></div>
+        <div class="tool-item"><span class="emoji">☁️</span><span class="name">YouTube API</span><span class="desc">העלאה אוטומטית</span></div>
+      </div>
+    </div>
+
+    <!-- ─── Footer ─── -->
+    <div class="footer">
+      <div class="signature">
+        🤖🕶️ <strong>Shimon the Robot</strong> — סוכן AI נאמן של אלון<br>
+        <span style="font-size: 0.75rem; color: var(--muted);">— Building a content creation network, one Shorts at a time —</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
