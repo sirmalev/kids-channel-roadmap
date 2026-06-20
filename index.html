@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚜 Uncle Sam's Farm — Master Plan</title>
+  <title>🚜 Uncle Sam's Farm — תוכנית אב</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -33,19 +33,17 @@
     }
 
     body {
-      font-family: 'Rubik', system-ui, sans-serif;
+      font-family: 'Rubik', 'Fredoka', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* ─── Scrollbar ─── */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-    /* ─── Floating Orbs ─── */
     .orb {
       position: fixed; border-radius: 50%; filter: blur(120px); opacity: .1; pointer-events: none; z-index: 0;
     }
@@ -60,7 +58,6 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; position: relative; z-index: 1; }
 
-    /* ─── NAV ─── */
     .nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(10,10,24,.85); backdrop-filter: blur(12px);
@@ -75,10 +72,7 @@
     }
     .nav a:hover { color: var(--text); background: rgba(255,255,255,.06); border-color: var(--border); }
 
-    /* ─── HERO ─── */
-    .hero {
-      text-align: center; padding: 2.5rem 0 1.5rem; position: relative;
-    }
+    .hero { text-align: center; padding: 2.5rem 0 1.5rem; position: relative; }
     .hero-emoji { font-size: 4.5rem; display: block; animation: pop 2s ease-in-out infinite; }
     @keyframes pop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
     .hero h1 {
@@ -95,7 +89,6 @@
       font-size: .8rem; color: var(--purple); font-weight: 600;
     }
 
-    /* ─── STATS ROW ─── */
     .stats {
       display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: .7rem; margin: 1.5rem 0 2rem;
     }
@@ -112,21 +105,15 @@
     .stat:nth-child(5) .num{color:var(--purple)}
     .stat:nth-child(6) .num{color:var(--orange)}
 
-    /* ─── SECTION TITLE ─── */
-    .sec-title {
-      font-size: 1.5rem; font-weight: 800; text-align: center; margin: 2.5rem 0 1.5rem;
-    }
+    .sec-title { font-size: 1.5rem; font-weight: 800; text-align: center; margin: 2.5rem 0 1.5rem; }
     .sec-title span { background: linear-gradient(135deg,var(--yellow),var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
-    /* ─── CHARACTER CARDS ─── */
     .chars { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; }
     .char {
       background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem 1rem; text-align: center;
       transition: .4s; cursor: default; position: relative; overflow: hidden;
     }
-    .char::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    }
+    .char::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
     .char:nth-child(1)::before{background:var(--woola)}
     .char:nth-child(2)::before{background:var(--mooly)}
     .char:nth-child(3)::before{background:var(--pip)}
@@ -144,7 +131,6 @@
     .char:nth-child(5) .teach{background:rgba(34,211,238,.15);color:var(--pingu)}
     .char .ps { font-size: .65rem; color: var(--muted); margin-top: .4rem; font-style: italic; }
 
-    /* ─── PIPELINE FLOW ─── */
     .pipeline { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4rem; margin: 1rem 0; }
     .pipe-step {
       display: flex; align-items: center; gap: .4rem;
@@ -155,10 +141,7 @@
     .pipe-step .ico { font-size: 1.2rem; }
     .pipe-arrow { color: var(--muted); font-size: 1.2rem; }
 
-    /* ─── SHORTS TIMELINE ─── */
-    .shorts-grid {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: .8rem;
-    }
+    .shorts-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: .8rem; }
     .short-card {
       background: var(--card); border: 1px solid var(--border); border-radius: 16px;
       padding: 1rem 1.2rem; transition: .3s; border-right: 4px solid;
@@ -181,12 +164,9 @@
     .short-card:hover { transform: translateY(-3px); }
     .short-card .num { font-size: .7rem; color: var(--muted); }
     .short-card h4 { font-size: .92rem; font-weight: 700; margin: .15rem 0 .2rem; }
-    .short-card .meta { font-size: .72rem; color: var(--muted); display: flex; gap: .6rem; }
-    .short-card .meta .char-tag {
-      padding: .1rem .5rem; border-radius: 999px; font-size: .65rem; font-weight: 600;
-    }
+    .short-card .meta { font-size: .72rem; color: var(--muted); display: flex; gap: .6rem; flex-wrap: wrap; }
+    .short-card .meta .char-tag { padding: .1rem .5rem; border-radius: 999px; font-size: .65rem; font-weight: 600; }
 
-    /* ─── PSYCHOLOGY/FRAMEWORK ─── */
     .psy-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: .7rem; }
     .psy-card {
       background: var(--card); border: 1px solid var(--border); border-radius: 16px;
@@ -211,15 +191,12 @@
     .age-card .age { font-size: 1.3rem; font-weight: 800; }
     .age-card .learn { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
 
-    /* ─── MILESTONES ─── */
     .miles { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: .7rem; }
     .mile {
       background: var(--card); border-radius: 16px; border: 1px solid var(--border);
       padding: 1rem; text-align: center; transition: .3s; position: relative; overflow: hidden;
     }
-    .mile::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    }
+    .mile::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
     .mile:nth-child(1)::after{background:var(--yellow)}
     .mile:nth-child(2)::after{background:var(--green)}
     .mile:nth-child(3)::after{background:var(--cyan)}
@@ -230,7 +207,6 @@
     .mile .target-text { font-size: 1rem; font-weight: 700; }
     .mile .when { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
 
-    /* ─── TIMELINE ─── */
     .tl { position: relative; padding-right: 2.5rem; }
     .tl::before {
       content: ''; position: absolute; right: 12px; top: 0; bottom: 0;
@@ -257,10 +233,7 @@
     .tl-card h4 { font-size: .95rem; font-weight: 700; }
     .tl-card p { font-size: .78rem; color: var(--muted); margin-top: .2rem; line-height: 1.5; }
 
-    /* ─── STRUCTURE BLOCK ─── */
-    .struct {
-      display: grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap: .5rem; margin: 1rem 0;
-    }
+    .struct { display: grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap: .5rem; margin: 1rem 0; }
     .struct-item {
       background: var(--card); border: 1px solid var(--border); border-radius: 12px;
       padding: .6rem .5rem; text-align: center; font-size: .7rem;
@@ -268,7 +241,6 @@
     .struct-item .time { font-weight: 700; color: var(--cyan); font-size: .8rem; display: block; }
     .struct-item .label { color: var(--muted); margin-top: .15rem; }
 
-    /* ─── TOOLS ─── */
     .tools { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: .6rem; }
     .tool {
       background: var(--card); border: 1px solid var(--border); border-radius: 14px;
@@ -278,7 +250,6 @@
     .tool .emoji { font-size: 1.7rem; display: block; }
     .tool .name { font-size: .7rem; font-weight: 600; margin-top: .2rem; }
 
-    /* ─── GROWTH ─── */
     .growth-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: .7rem; }
     .growth-item {
       background: var(--card); border: 1px solid var(--border); border-radius: 14px;
@@ -288,7 +259,6 @@
     .growth-item h4 { font-size: .85rem; font-weight: 700; }
     .growth-item p { font-size: .72rem; color: var(--muted); margin-top: .2rem; line-height: 1.5; }
 
-    /* ─── KPI ─── */
     .kpi-table { width: 100%; border-collapse: collapse; margin-top: .8rem; }
     .kpi-table th, .kpi-table td {
       padding: .6rem .5rem; text-align: center; font-size: .75rem;
@@ -298,14 +268,12 @@
     .kpi-table td:first-child { text-align: right; font-weight: 600; }
     .kpi-table tr:hover td { background: rgba(255,255,255,.02); }
 
-    /* ─── FOOTER ─── */
     .footer {
       text-align: center; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 2.5rem;
     }
     .footer strong { color: var(--purple); }
     .footer .small { font-size: .7rem; color: var(--muted); margin-top: .3rem; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width:640px) {
       .container { padding: 1rem; }
       .stats { grid-template-columns: repeat(2,1fr); }
@@ -321,15 +289,15 @@
 <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
 
 <div class="nav">
-  <a href="#characters">🐾 Characters</a>
-  <a href="#psychology">🧠 Psychology</a>
-  <a href="#structure">🎬 Format</a>
-  <a href="#season1">📺 Season 1</a>
-  <a href="#pipeline">⚙️ Pipeline</a>
-  <a href="#milestones">🎯 Goals</a>
-  <a href="#tools">🧰 Tools</a>
-  <a href="#growth">📈 Growth</a>
-  <a href="#risks">⚠️ Risks</a>
+  <a href="#characters">🐾 דמויות</a>
+  <a href="#psychology">🧠 פסיכולוגיה</a>
+  <a href="#structure">🎬 פורמט</a>
+  <a href="#season1">📺 עונה 1</a>
+  <a href="#pipeline">⚙️ הפקה</a>
+  <a href="#milestones">🎯 יעדים</a>
+  <a href="#tools">🧰 כלים</a>
+  <a href="#growth">📈 צמיחה</a>
+  <a href="#risks">⚠️ סיכונים</a>
 </div>
 
 <div class="container">
@@ -338,347 +306,287 @@
   <div class="hero">
     <span class="hero-emoji">🚜</span>
     <h1>Uncle Sam's Farm</h1>
-    <p class="sub">A farm where animals learn, laugh, and grow — and so do the kids watching 🐑🌈</p>
-    <span class="badge">🤖 Built by Shimon &middot; Agent of Alon &middot; 2026</span>
+    <p class="sub">חווה שבה חיות לומדות, צוחקות וגדלות — וגם הילדים שצופים 🐑🌈</p>
+    <span class="badge">🤖 נבנה על־ידי Shimon &middot; סוכן של אלון &middot; 2026</span>
   </div>
 
   <!-- ═══ STATS ═══ -->
   <div class="stats">
-    <div class="stat"><span class="num">5</span><span class="lbl">Characters</span></div>
-    <div class="stat"><span class="num">15</span><span class="lbl">Season 1 Shorts</span></div>
-    <div class="stat"><span class="num">60s</span><span class="lbl">Per Short</span></div>
-    <div class="stat"><span class="num">7</span><span class="lbl">Tools</span></div>
-    <div class="stat"><span class="num">13</span><span class="lbl">Plan Sections</span></div>
-    <div class="stat"><span class="num">∞</span><span class="lbl">Potential 🚀</span></div>
+    <div class="stat"><span class="num">5</span><span class="lbl">דמויות</span></div>
+    <div class="stat"><span class="num">15</span><span class="lbl">שורטסים בעונה 1</span></div>
+    <div class="stat"><span class="num">60s</span><span class="lbl">לכל שורטס</span></div>
+    <div class="stat"><span class="num">7</span><span class="lbl">כלים</span></div>
+    <div class="stat"><span class="num">13</span><span class="lbl">פרקי תוכנית</span></div>
+    <div class="stat"><span class="num">∞</span><span class="lbl">פוטנציאל 🚀</span></div>
   </div>
 
-  <!-- ═══ THE HOOK / PSYCHOLOGY ═══ -->
-  <h2 class="sec-title" id="psychology"><span>🧠 The Psychology</span></h2>
-  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Why kids ages 2-6 watch, learn, and come back</p>
+  <!-- ═══ PSYCHOLOGY ═══ -->
+  <h2 class="sec-title" id="psychology"><span>🧠 הפסיכולוגיה — למה ילדים מתמכרים</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">למה ילדים 2-6 צופים, לומדים וחוזרים</p>
 
   <div class="psy-grid">
-    <div class="psy-card"><span class="num">1</span><span class="lbl">Character Love</span><span class="desc">Kids need a "friend" on screen — Woola becomes a trusted companion</span></div>
-    <div class="psy-card"><span class="num">2</span><span class="lbl">Repetition</span><span class="desc">Same structure every Short = comfort. Kids feel safe knowing what's next</span></div>
-    <div class="psy-card"><span class="num">3</span><span class="lbl">Color + Sound</span><span class="desc">Bright visuals + catchy tunes trigger dopamine. Brains LOVE it</span></div>
-    <div class="psy-card"><span class="num">4</span><span class="lbl">Direct Address</span><span class="desc">"Can YOU say RED?" turns passive watching into active participation</span></div>
-    <div class="psy-card"><span class="num">5</span><span class="lbl">Surprise</span><span class="desc">1 "wow moment" per Short — keeps them coming back for more</span></div>
+    <div class="psy-card"><span class="num">1</span><span class="lbl">חיבור לדמות</span><span class="desc">ילדים צריכים "חבר" על המסך — Woola הופכת לבן לוויה מהימן</span></div>
+    <div class="psy-card"><span class="num">2</span><span class="lbl">חזרתיות</span><span class="desc">אותו מבנה בכל שורטס = ביטחון. הילדים יודעים מה מצפה להם</span></div>
+    <div class="psy-card"><span class="num">3</span><span class="lbl">צבע + צליל</span><span class="desc">ויז'ואל בהיר + מנגינה קליטה = דופמין. המוח אוהב את זה</span></div>
+    <div class="psy-card"><span class="num">4</span><span class="lbl">פנייה ישירה</span><span class="desc">"אתה יכול להגיד RED?" — הופך צפייה פאסיבית להשתתפות אקטיבית</span></div>
+    <div class="psy-card"><span class="num">5</span><span class="lbl">הפתעה</span><span class="desc">רגע "וואו" אחד בכל שורטס — גורם להם לחזור לעוד</span></div>
   </div>
 
-  <h3 style="font-size:.95rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📈 Developmental Learning Arc</h3>
+  <h3 style="font-size:.95rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📈 מסלול למידה התפתחותי</h3>
   <div class="age-grid">
-    <div class="age-card"><div class="age" style="color:var(--green)">2-3</div><div class="learn">Colors, Count 1-3, Circle, Animal Sounds</div></div>
-    <div class="age-card"><div class="age" style="color:var(--yellow)">3-4</div><div class="learn">More Colors, Count 1-10, Square/Triangle, ABC basics, Opposites</div></div>
-    <div class="age-card"><div class="age" style="color:var(--orange)">4-5</div><div class="learn">A-Z, Count 1-20, Patterns, Sorting, Emotions</div></div>
-    <div class="age-card"><div class="age" style="color:var(--pink)">5-6</div><div class="learn">Phonics, Simple Addition, Days/Weather, Sequencing</div></div>
+    <div class="age-card"><div class="age" style="color:var(--green)">2-3</div><div class="learn">צבעים, לספור 1-3, עיגול, קולות חיות</div></div>
+    <div class="age-card"><div class="age" style="color:var(--yellow)">3-4</div><div class="learn">עוד צבעים, לספור 1-10, ריבוע/משולש, ABC בסיסי, הפכים</div></div>
+    <div class="age-card"><div class="age" style="color:var(--orange)">4-5</div><div class="learn">א'-ת', לספור 1-20, דפוסים, מיון, רגשות</div></div>
+    <div class="age-card"><div class="age" style="color:var(--pink)">5-6</div><div class="learn">פוניקה, חיבור פשוט, ימים/מזג אוויר, רצפים</div></div>
   </div>
 
-  <!-- ═══ CHARACTER CARDS ═══ -->
-  <h2 class="sec-title" id="characters"><span>🐾 The Characters</span></h2>
+  <!-- ═══ CHARACTERS ═══ -->
+  <h2 class="sec-title" id="characters"><span>🐾 הדמויות</span></h2>
 
   <div class="chars">
     <div class="char">
       <span class="emoji">🐑</span>
       <div class="name" style="color:var(--woola)">Woola</div>
-      <div class="title">The Rainbow Sheep</div>
-      <div class="teach">🌈 Colors</div>
-      <div class="ps">"Baa-lue!" — Changes color when she touches things</div>
+      <div class="title">הכבשה הקשת</div>
+      <div class="teach">🌈 צבעים</div>
+      <div class="ps">"Baa-lue!" — משנה צבע כשהיא נוגעת בדברים</div>
     </div>
     <div class="char">
       <span class="emoji">🐄</span>
       <div class="name" style="color:var(--mooly)">Mooly</div>
-      <div class="title">The Wise Cow</div>
-      <div class="teach">🔢 Numbers</div>
-      <div class="ps">"Moo-velous!" — Gentle, patient, motherly</div>
+      <div class="title">הפרה החכמה</div>
+      <div class="teach">🔢 מספרים</div>
+      <div class="ps">"Moo-velous!" — רגועה, סבלנית, אימהית</div>
     </div>
     <div class="char">
       <span class="emoji">🐷</span>
       <div class="name" style="color:var(--pip)">Pip</div>
-      <div class="title">The Silly Pig</div>
-      <div class="teach">⭕ Shapes</div>
-      <div class="ps">"Oink-tastic!" — Clumsy, hungry, comic relief</div>
+      <div class="title">החזיר המצחיק</div>
+      <div class="teach">⭕ צורות</div>
+      <div class="ps">"Oink-tastic!" — מגושם, רעב, הקומיקאי של החבורה</div>
     </div>
     <div class="char">
       <span class="emoji">🐒</span>
       <div class="name" style="color:var(--bongo)">Bongo</div>
-      <div class="title">The Rescue Monkey</div>
+      <div class="title">הקוף המציל</div>
       <div class="teach">🔤 ABC</div>
-      <div class="ps">"Ooh! A-B-C!" — Escaped circus, high energy</div>
+      <div class="ps">"Ooh! A-B-C!" — ברח מהקרקס, אנרגיה אין סופית</div>
     </div>
     <div class="char">
       <span class="emoji">🐧</span>
       <div class="name" style="color:var(--pingu)">Pingu</div>
-      <div class="title">The Lost Penguin</div>
-      <div class="teach">↔️ Opposites</div>
-      <div class="ps">"...Honk." — Deadpan, waddles, confused by farm life</div>
+      <div class="title">הפינגווין האובד</div>
+      <div class="teach">↔️ הפכים</div>
+      <div class="ps">"...Honk." — רציני, מתנודד, מבולבל מהחיים בחווה</div>
     </div>
   </div>
 
   <div style="text-align:center;margin:.5rem 0;">
     <span style="display:inline-block;padding:.3rem 1rem;border-radius:999px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);font-size:.75rem;color:var(--muted);">
-      👨‍🌾 Uncle Sam — The unseen narrator (hands + voice only, like Teletubbies)
+      👨‍🌾 Uncle Sam — המספר הנסתר (רק ידיים + קול, כמו בטלטביז)
     </span>
   </div>
 
-  <!-- ═══ SHORTS FORMAT TIMELINE ═══ -->
-  <h2 class="sec-title" id="structure"><span>🎬 The Golden Format</span></h2>
-  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Every Short = exact same structure. Kids learn to expect it.</p>
+  <!-- ═══ FORMAT ═══ -->
+  <h2 class="sec-title" id="structure"><span>🎬 הפורמט המוזהב</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">כל שורטס = אותו מבנה בדיוק. הילדים לומדים לצפות לו.</p>
 
   <div class="struct">
-    <div class="struct-item"><span class="time">0:00</span><span class="label">🛎️ Bell + Good Morning</span><span class="label" style="font-size:.6rem;color:var(--muted)">Hook — familiar start</span></div>
-    <div class="struct-item"><span class="time">0:05</span><span class="label">📋 Topic Intro</span><span class="label" style="font-size:.6rem;color:var(--muted)">Setup — what we learn</span></div>
-    <div class="struct-item"><span class="time">0:10</span><span class="label">👩‍🏫 3 Examples</span><span class="label" style="font-size:.6rem;color:var(--muted)">Teaching — "Say RED!"</span></div>
-    <div class="struct-item"><span class="time">0:35</span><span class="label">🔄 Review</span><span class="label" style="font-size:.6rem;color:var(--muted)">Reinforcement together</span></div>
-    <div class="struct-item"><span class="time">0:45</span><span class="label">🎉 Celebration + Bye</span><span class="label" style="font-size:.6rem;color:var(--muted)">Reward — dopamine hit</span></div>
-    <div class="struct-item"><span class="time">0:55</span><span class="label">🔔 Subscribe</span><span class="label" style="font-size:.6rem;color:var(--muted)">CTA + brand</span></div>
+    <div class="struct-item"><span class="time">0:00</span><span class="label">🛎️ פעמון + בוקר טוב</span><span class="label" style="font-size:.6rem;color:var(--muted)">הוק — התחלה מוכרת</span></div>
+    <div class="struct-item"><span class="time">0:05</span><span class="label">📋 הצגת הנושא</span><span class="label" style="font-size:.6rem;color:var(--muted)">הגדרה — מה נלמד</span></div>
+    <div class="struct-item"><span class="time">0:10</span><span class="label">👩‍🏫 3 דוגמאות</span><span class="label" style="font-size:.6rem;color:var(--muted)">לימוד — "תגיד RED!"</span></div>
+    <div class="struct-item"><span class="time">0:35</span><span class="label">🔄 חזרה</span><span class="label" style="font-size:.6rem;color:var(--muted)">חיזוק ביחד</span></div>
+    <div class="struct-item"><span class="time">0:45</span><span class="label">🎉 חגיגה + ביי</span><span class="label" style="font-size:.6rem;color:var(--muted)">פרס — דופמין</span></div>
+    <div class="struct-item"><span class="time">0:55</span><span class="label">🔔 הרשמה</span><span class="label" style="font-size:.6rem;color:var(--muted)">קריאה לפעולה</span></div>
   </div>
 
   <!-- ═══ SEASON 1 ═══ -->
-  <h2 class="sec-title" id="season1"><span>📺 Season 1 — "First Steps"</span></h2>
-  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">15 Shorts launching the channel. One topic per Short.</p>
+  <h2 class="sec-title" id="season1"><span>📺 עונה 1 — "צעדים ראשונים"</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">15 שורטסים שמשיקים את הערוץ. נושא אחד בכל שורטס.</p>
 
   <div class="shorts-grid">
-    <div class="short-card">
-      <div class="num">S1E01</div>
-      <h4>🌈 Woola's Rainbow</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Red, Blue, Yellow</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E02</div>
-      <h4>🔢 Mooly's Apples</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1, 2, 3</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E03</div>
-      <h4>⭕ Pip Meets Circle</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Circle</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E04</div>
-      <h4>🔤 Bongo's ABC Dance</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> A, B, C</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E05</div>
-      <h4>🥶 Pingu's Hot & Cold</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(34,211,238,.15);color:var(--pingu)">Pingu</span> Opposites</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E06</div>
-      <h4>🌿 Woola Green & Orange</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Green, Orange</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E07</div>
-      <h4>5️⃣ Mooly Counts to 5</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1-5</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E08</div>
-      <h4>🟧 Pip Loves Squares</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Square</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E09</div>
-      <h4>📝 Bongo D-E-F</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> D, E, F</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E10</div>
-      <h4>🐄🐧 Big & Small</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(52,211,153,.15);color:var(--green)">Mooly+Pingu</span> Opposites</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E11</div>
-      <h4>💜 Woola's Purple Day</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Purple</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E12</div>
-      <h4>🥚 Mooly's Eggs</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly+Pip</span> 1-5 Review</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E13</div>
-      <h4>🔺 Pip's Triangle</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Triangle</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E14</div>
-      <h4>🎵 Bongo G-H-I</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> G, H, I</div>
-    </div>
-    <div class="short-card">
-      <div class="num">S1E15</div>
-      <h4>🎉 Color Party!</h4>
-      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--yellow)">All</span> Season Finale</div>
-    </div>
+    <div class="short-card"><div class="num">S1E01</div><h4>🌈 Woola's Rainbow</h4><div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> אדום, כחול, צהוב</div></div>
+    <div class="short-card"><div class="num">S1E02</div><h4>🔢 Mooly's Apples</h4><div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1, 2, 3</div></div>
+    <div class="short-card"><div class="num">S1E03</div><h4>⭕ Pip Meets Circle</h4><div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> עיגול</div></div>
+    <div class="short-card"><div class="num">S1E04</div><h4>🔤 Bongo's ABC Dance</h4><div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> A, B, C</div></div>
+    <div class="short-card"><div class="num">S1E05</div><h4>🥶 Pingu's Hot & Cold</h4><div class="meta"><span class="char-tag" style="background:rgba(34,211,238,.15);color:var(--pingu)">Pingu</span> חם נגד קר</div></div>
+    <div class="short-card"><div class="num">S1E06</div><h4>🌿 Woola Green & Orange</h4><div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> ירוק, כתום</div></div>
+    <div class="short-card"><div class="num">S1E07</div><h4>5️⃣ Mooly Counts to 5</h4><div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1-5</div></div>
+    <div class="short-card"><div class="num">S1E08</div><h4>🟧 Pip Loves Squares</h4><div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> ריבוע</div></div>
+    <div class="short-card"><div class="num">S1E09</div><h4>📝 Bongo D-E-F</h4><div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> D, E, F</div></div>
+    <div class="short-card"><div class="num">S1E10</div><h4>🐄🐧 Big & Small</h4><div class="meta"><span class="char-tag" style="background:rgba(52,211,153,.15);color:var(--green)">Mooly+Pingu</span> גדול נגד קטן</div></div>
+    <div class="short-card"><div class="num">S1E11</div><h4>💜 Woola's Purple Day</h4><div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> סגול</div></div>
+    <div class="short-card"><div class="num">S1E12</div><h4>🥚 Mooly's Eggs</h4><div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly+Pip</span> חזרה 1-5</div></div>
+    <div class="short-card"><div class="num">S1E13</div><h4>🔺 Pip's Triangle</h4><div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> משולש</div></div>
+    <div class="short-card"><div class="num">S1E14</div><h4>🎵 Bongo G-H-I</h4><div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> G, H, I</div></div>
+    <div class="short-card"><div class="num">S1E15</div><h4>🎉 Color Party!</h4><div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--yellow)">כולם</span> סיום עונה</div></div>
   </div>
 
-  <!-- ═══ PRODUCTION PIPELINE ═══ -->
-  <h2 class="sec-title" id="pipeline"><span>⚙️ Production Pipeline</span></h2>
+  <!-- ═══ PIPELINE ═══ -->
+  <h2 class="sec-title" id="pipeline"><span>⚙️ צינור הפקה</span></h2>
 
   <div class="pipeline">
-    <div class="pipe-step"><span class="ico">✍️</span> Script</div>
+    <div class="pipe-step"><span class="ico">✍️</span> תסריט</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">🖼️</span> Images</div>
+    <div class="pipe-step"><span class="ico">🖼️</span> תמונות</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">🎬</span> Animate</div>
+    <div class="pipe-step"><span class="ico">🎬</span> אנימציה</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">🎙️</span> Voiceover</div>
+    <div class="pipe-step"><span class="ico">🎙️</span> קריינות</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">🎵</span> Music</div>
+    <div class="pipe-step"><span class="ico">🎵</span> מוזיקה</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">✂️</span> Edit</div>
+    <div class="pipe-step"><span class="ico">✂️</span> עריכה</div>
     <span class="pipe-arrow">→</span>
-    <div class="pipe-step"><span class="ico">📡</span> Upload</div>
+    <div class="pipe-step"><span class="ico">📡</span> העלאה</div>
   </div>
 
   <div class="pipeline" style="margin-top:.5rem;">
-    <div class="pipe-step" style="font-size:.7rem;border-color:transparent;background:transparent;"><span class="ico">📊</span> <span style="color:var(--muted);">~40 min / Short · Batch 10 Shorts in ~5 hours</span></div>
+    <div class="pipe-step" style="font-size:.7rem;border-color:transparent;background:transparent;"><span class="ico">📊</span> <span style="color:var(--muted);">~40 דקות לשורטס · 10 שורטסים ב-5 שעות עבודה</span></div>
   </div>
 
-  <h3 style="font-size:.9rem;font-weight:600;text-align:center;margin:1.2rem 0 .6rem;color:var(--muted);">📦 Per-Short Breakdown</h3>
+  <h3 style="font-size:.9rem;font-weight:600;text-align:center;margin:1.2rem 0 .6rem;color:var(--muted);">📦 פירוט לשורטס בודד</h3>
   <div class="struct">
-    <div class="struct-item"><span class="time" style="color:var(--pink)">10m</span><span class="label">Script</span></div>
-    <div class="struct-item"><span class="time" style="color:var(--purple)">5m</span><span class="label">Images</span></div>
-    <div class="struct-item"><span class="time" style="color:var(--blue)">20m</span><span class="label">Animation</span></div>
-    <div class="struct-item"><span class="time" style="color:var(--cyan)">2m</span><span class="label">Voiceover</span></div>
-    <div class="struct-item"><span class="time" style="color:var(--green)">1m</span><span class="label">Music</span></div>
-    <div class="struct-item"><span class="time" style="color:var(--yellow)">8m</span><span class="label">Edit + Export</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--pink)">10ד</span><span class="label">תסריט</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--purple)">5ד</span><span class="label">תמונות</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--blue)">20ד</span><span class="label">אנימציה</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--cyan)">2ד</span><span class="label">קריינות</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--green)">1ד</span><span class="label">מוזיקה</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--yellow)">8ד</span><span class="label">עריכה + ייצוא</span></div>
   </div>
 
   <!-- ═══ MILESTONES ═══ -->
-  <h2 class="sec-title" id="milestones"><span>🎯 Milestones & Goals</span></h2>
+  <h2 class="sec-title" id="milestones"><span>🎯 אבני דרך ויעדים</span></h2>
 
-  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:0 0 .7rem;color:var(--muted);">🚩 Launch Milestones</h3>
+  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:0 0 .7rem;color:var(--muted);">🚩 אבני דרך בהשקה</h3>
   <div class="miles">
-    <div class="mile"><div class="target-text">📺 10 Shorts</div><div class="when">Day 11 — Channel Alive</div></div>
-    <div class="mile"><div class="target-text">👀 1K Views</div><div class="when">Month 1 — Early Traction</div></div>
-    <div class="mile"><div class="target-text">50 🧑‍🤝‍🧑</div><div class="when">Month 1 — Early Community</div></div>
-    <div class="mile"><div class="target-text">📈 10K Views</div><div class="when">Month 3 — Algorithm Traction</div></div>
-    <div class="mile"><div class="target-text">🌟 1K Subs</div><div class="when">Month 6 — Monetization!</div></div>
-    <div class="mile"><div class="target-text">🚀 100K Views</div><div class="when">Month 9 — Viral Potential</div></div>
+    <div class="mile"><div class="target-text">📺 10 שורטסים</div><div class="when">יום 11 — הערוץ חי</div></div>
+    <div class="mile"><div class="target-text">👀 1K צפיות</div><div class="when">חודש 1 — משיכה ראשונית</div></div>
+    <div class="mile"><div class="target-text">50 🧑‍🤝‍🧑</div><div class="when">חודש 1 — קהילה ראשונה</div></div>
+    <div class="mile"><div class="target-text">📈 10K צפיות</div><div class="when">חודש 3 — תפיסת אלגוריתם</div></div>
+    <div class="mile"><div class="target-text">🌟 1K רשומים</div><div class="when">חודש 6 — מונטיזציה!</div></div>
+    <div class="mile"><div class="target-text">🚀 100K צפיות</div><div class="when">חודש 9 — פוטנציאל ויראלי</div></div>
   </div>
 
-  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📊 KPI Targets</h3>
+  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📊 יעדי KPI</h3>
 
   <div style="overflow-x:auto;">
     <table class="kpi-table">
-      <thead><tr><th>KPI</th><th>Month 1</th><th>Month 3</th><th>Month 6</th><th>Year 1</th></tr></thead>
+      <thead><tr><th>מדד</th><th>חודש 1</th><th>חודש 3</th><th>חודש 6</th><th>שנה 1</th></tr></thead>
       <tbody>
-        <tr><td style="color:var(--pink)">Shorts Published</td><td>15</td><td>60</td><td>150</td><td>365+</td></tr>
-        <tr><td style="color:var(--cyan)">Total Views</td><td>1K</td><td>10K</td><td>100K</td><td>1M+</td></tr>
-        <tr><td style="color:var(--green)">Subscribers</td><td>50</td><td>300</td><td>1,000</td><td>10K+</td></tr>
-        <tr><td style="color:var(--yellow)">Avg Retention</td><td>60%</td><td>70%</td><td>75%</td><td>80%+</td></tr>
-        <tr><td style="color:var(--purple)">New Subs/Day</td><td>2</td><td>10</td><td>30</td><td>100+</td></tr>
+        <tr><td style="color:var(--pink)">שורטסים שפורסמו</td><td>15</td><td>60</td><td>150</td><td>365+</td></tr>
+        <tr><td style="color:var(--cyan)">סך צפיות</td><td>1K</td><td>10K</td><td>100K</td><td>1M+</td></tr>
+        <tr><td style="color:var(--green)">מנויים</td><td>50</td><td>300</td><td>1,000</td><td>10K+</td></tr>
+        <tr><td style="color:var(--yellow)">אחוז צפייה ממוצע</td><td>60%</td><td>70%</td><td>75%</td><td>80%+</td></tr>
+        <tr><td style="color:var(--purple)">מנויים חדשים/יום</td><td>2</td><td>10</td><td>30</td><td>100+</td></tr>
       </tbody>
     </table>
   </div>
 
   <!-- ═══ TIMELINE ═══ -->
-  <h2 class="sec-title"><span>🗓️ Execution Timeline</span></h2>
+  <h2 class="sec-title"><span>🗓️ לוח זמנים להרצה</span></h2>
 
   <div class="tl">
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <h4>Week 1 · Foundation 🏗️</h4>
-        <p>Design all 5 characters as Higgsfield Reference Elements · Set up YouTube API · Choose Uncle Sam's voice on ElevenLabs · Write scripts for first 3 Shorts</p>
+        <h4>שבוע 1 · יסודות 🏗️</h4>
+        <p>עיצוב כל 5 הדמויות ב-Higgsfield Reference Elements · הגדרת YouTube API · בחירת קול Uncle Sam ב-ElevenLabs · כתיבת תסריטים ל-3 שורטסים ראשונים</p>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <h4>Week 2 · Pilot 🎬</h4>
-        <p>Produce S1E01 "Woola's Rainbow" (images + animation + voice + music + edit) · Upload to YouTube · Analyze first results</p>
+        <h4>שבוע 2 · פיילוט 🎬</h4>
+        <p>הפקת S1E01 "Woola's Rainbow" (תמונות + אנימציה + קול + מוזיקה + עריכה) · העלאה ליוטיוב · ניתוח תוצאות</p>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <h4>Week 3-4 · Season 1 🚀</h4>
-        <p>Batch produce S1E02 through S1E15 · Publish 1 Short/day minimum · A/B test titles, intros, timing</p>
+        <h4>שבוע 3-4 · עונה 1 🚀</h4>
+        <p>הפקת S1E02 עד S1E15 · לפחות שורטס אחד ביום · A/B לבדיקת כותרות, פתיחים, תזמון</p>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <h4>Month 2 · Optimize 🔧</h4>
-        <p>Review analytics — double down on best topics · Launch Season 2 · Expand to TikTok/Instagram</p>
+        <h4>חודש 2 · אופטימיזציה 🔧</h4>
+        <p>ניתוח נתונים — להכפיל על הנושאים הכי חזקים · השקת עונה 2 · התפשטות לטיקטוק ואינסטגרם</p>
       </div>
     </div>
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-card">
-        <h4>Month 6+ · Scale 📈</h4>
-        <p>Monetization · Consistency → Algorithm reward · More complex topics · Community building</p>
+        <h4>חודש 6+ · קנה מידה 📈</h4>
+        <p>מונטיזציה · עקביות → תגמול אלגוריתם · נושאים מורכבים יותר · בניית קהילה</p>
       </div>
     </div>
   </div>
 
   <!-- ═══ TOOLS ═══ -->
-  <h2 class="sec-title" id="tools"><span>🧰 Tool Stack</span></h2>
+  <h2 class="sec-title" id="tools"><span>🧰 ערכת הכלים</span></h2>
   <div class="tools">
-    <div class="tool"><span class="emoji">🖼️</span><span class="name">Higgsfield</span><span class="name" style="font-weight:400;color:var(--muted)">Images + Animation</span></div>
-    <div class="tool"><span class="emoji">🎬</span><span class="name">Kling 3.0</span><span class="name" style="font-weight:400;color:var(--muted)">Image-to-Video</span></div>
-    <div class="tool"><span class="emoji">🎙️</span><span class="name">ElevenLabs</span><span class="name" style="font-weight:400;color:var(--muted)">Voiceover</span></div>
-    <div class="tool"><span class="emoji">🎵</span><span class="name">music_generate</span><span class="name" style="font-weight:400;color:var(--muted)">Background Music</span></div>
-    <div class="tool"><span class="emoji">✂️</span><span class="name">ffmpeg</span><span class="name" style="font-weight:400;color:var(--muted)">Editing + Exports</span></div>
-    <div class="tool"><span class="emoji">☁️</span><span class="name">YouTube API</span><span class="name" style="font-weight:400;color:var(--muted)">Auto-Upload</span></div>
+    <div class="tool"><span class="emoji">🖼️</span><span class="name">Higgsfield</span><span class="name" style="font-weight:400;color:var(--muted)">תמונות + אנימציה</span></div>
+    <div class="tool"><span class="emoji">🎬</span><span class="name">Kling 3.0</span><span class="name" style="font-weight:400;color:var(--muted)">תמונה → וידאו</span></div>
+    <div class="tool"><span class="emoji">🎙️</span><span class="name">ElevenLabs</span><span class="name" style="font-weight:400;color:var(--muted)">קריינות</span></div>
+    <div class="tool"><span class="emoji">🎵</span><span class="name">music_generate</span><span class="name" style="font-weight:400;color:var(--muted)">מוזיקת רקע</span></div>
+    <div class="tool"><span class="emoji">✂️</span><span class="name">ffmpeg</span><span class="name" style="font-weight:400;color:var(--muted)">עריכה + ייצוא</span></div>
+    <div class="tool"><span class="emoji">☁️</span><span class="name">YouTube API</span><span class="name" style="font-weight:400;color:var(--muted)">העלאה אוטומטית</span></div>
     <div class="tool"><span class="emoji">📝</span><span class="name">PLAN.md</span><span class="name" style="font-weight:400;color:var(--muted)">GitHub</span></div>
   </div>
 
   <!-- ═══ GROWTH ═══ -->
-  <h2 class="sec-title" id="growth"><span>📈 Growth Engines</span></h2>
+  <h2 class="sec-title" id="growth"><span>📈 מנועי צמיחה</span></h2>
 
   <div class="growth-grid">
-    <div class="growth-item"><h4 style="color:var(--pink)">🎬 Shorts Feed</h4><p>Let the YouTube algorithm do the heavy lifting — kids content has high natural shareability</p></div>
-    <div class="growth-item"><h4 style="color:var(--purple)">🔄 Cross-Platform</h4><p>Repurpose every Short for TikTok Reels + Instagram Reels — 3 platforms, 1 production</p></div>
-    <div class="growth-item"><h4 style="color:var(--blue)">👨‍👩‍👧 Parent Communities</h4><p>Reddit r/Parenting, Facebook groups — parents actively share educational content they trust</p></div>
-    <div class="growth-item"><h4 style="color:var(--cyan)">🏷️ Hashtags</h4><p>#KidsLearning #ToddlerLife #EducationalVideos #ParentingTips — reach beyond subs</p></div>
-    <div class="growth-item"><h4 style="color:var(--green)">📋 Playlists</h4><p>"Watch All Shorts" playlist keeps kids watching sequentially → session time + retention</p></div>
-    <div class="growth-item"><h4 style="color:var(--yellow)">💬 Engagement</h4><p>Reply as Uncle Sam: "Thanks for watching, little learner! What's YOUR favorite color?"</p></div>
+    <div class="growth-item"><h4 style="color:var(--pink)">🎬 Shorts Feed</h4><p>לתת לאלגוריתם של יוטיוב לעבוד — לתוכן ילדים יש שיתופיות טבעית גבוהה</p></div>
+    <div class="growth-item"><h4 style="color:var(--purple)">🔄 חוצה פלטפורמות</h4><p>למחזר כל שורטס לטיקטוק ואינסטגרם — 3 פלטפורמות מהפקה אחת</p></div>
+    <div class="growth-item"><h4 style="color:var(--blue)">👨‍👩‍👧 קהילות הורים</h4><p>Reddit r/Parenting, קבוצות פייסבוק — הורים משתפים תוכן חינוכי שהם סומכים עליו</p></div>
+    <div class="growth-item"><h4 style="color:var(--cyan)">🏷️ האשטגים</h4><p>#KidsLearning #EducationalVideos #ParentingTips — להגיע מעבר למנויים</p></div>
+    <div class="growth-item"><h4 style="color:var(--green)">📋 פלייליסטים</h4><p>"צפו בכל השורטסים" — שומר ילדים צופים ברצף → זמן צפייה + שימור</p></div>
+    <div class="growth-item"><h4 style="color:var(--yellow)">💬 מעורבות</h4><p>לענות בתור Uncle Sam: "תודה שצפיתם! מה הצבע האהוב עליכם?"</p></div>
   </div>
 
   <!-- ═══ RISKS ═══ -->
-  <h2 class="sec-title" id="risks"><span>⚠️ Risk Management</span></h2>
+  <h2 class="sec-title" id="risks"><span>⚠️ ניהול סיכונים</span></h2>
 
   <div style="overflow-x:auto;">
     <table class="kpi-table">
-      <thead><tr><th>Risk</th><th>P</th><th>I</th><th>Mitigation</th></tr></thead>
+      <thead><tr><th>סיכון</th><th>הסת'</th><th>השפע'</th><th>פתרון</th></tr></thead>
       <tbody>
-        <tr><td style="color:var(--pink)">COPPA Compliance</td><td>⚡</td><td>⚡⚡⚡</td><td>Mark ALL as "Made for Kids" — no comments, safe harbor</td></tr>
-        <tr><td style="color:var(--purple)">Copyright Claims</td><td>⚡</td><td>⚡⚡</td><td>music_generate = original. No third-party music ever</td></tr>
-        <tr><td style="color:var(--blue)">Higgsfield Credits</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>Check balance before each batch. Buy pack if low</td></tr>
-        <tr><td style="color:var(--cyan)">Character Inconsistency</td><td>⚡⚡</td><td>⚡⚡</td><td>Reference Elements + test 3 generations before locking</td></tr>
-        <tr><td style="color:var(--green)">Swipe Rate > 50%</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>A/B test hooks in first 3 seconds. Change intro</td></tr>
-        <tr><td style="color:var(--yellow)">YouTube Demonetization</td><td>⚡</td><td>⚡⚡</td><td>Kids content = different rules. Plan for alternative revenue</td></tr>
+        <tr><td style="color:var(--pink)">תאימות COPPA</td><td>⚡</td><td>⚡⚡⚡</td><td>לסמן ALL כ"Made for Kids" — חסין תביעות</td></tr>
+        <tr><td style="color:var(--purple)">תביעות זכויות יוצרים</td><td>⚡</td><td>⚡⚡</td><td>music_generate = מוזיקה מקורית. לעולם לא מוזיקה שלישית</td></tr>
+        <tr><td style="color:var(--blue)">נגמרו קרדיטים</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>לבדוק יתרה לפני באטש. לקנות חבילה במידת הצורך</td></tr>
+        <tr><td style="color:var(--cyan)">דמויות לא עקביות</td><td>⚡⚡</td><td>⚡⚡</td><td>Reference Elements + 3 בדיקות לפני נעילה</td></tr>
+        <tr><td style="color:var(--green)">Swipe Rate > 50%</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>A/B לבדוק הוקים ב-3 שניות ראשונות. לשנות פתיח</td></tr>
+        <tr><td style="color:var(--yellow)">דימונטיזציה</td><td>⚡</td><td>⚡⚡</td><td>לתוכן ילדים יש חוקים שונים. לתכנן הכנסה חלופית</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- ═══ IMMEDIATE NEXT STEPS ═══ -->
-  <h2 class="sec-title"><span>✅ Immediate Next Steps</span></h2>
+  <!-- ═══ NEXT STEPS ═══ -->
+  <h2 class="sec-title"><span>✅ הצעדים המיידיים</span></h2>
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
     <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.2rem;">
-      <h3 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:.5rem;">🧑‍🌾 For You (Alon)</h3>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:.5rem;">🧑‍🌾 בשבילך</h3>
       <ul style="list-style:none;font-size:.8rem;line-height:1.6;">
-        <li>🔴 Test ElevenLabs voice (Adam for Uncle Sam)</li>
-        <li>🔴 Help me check Higgsfield credits</li>
-        <li>🟡 Create YouTube channel "Uncle Sam's Farm"</li>
-        <li>🟡 Google Cloud Project + enable YouTube API</li>
-        <li>🟢 Choose a channel profile picture</li>
+        <li>🔴 לבדוק קול ElevenLabs (Adam ל-Uncle Sam)</li>
+        <li>🔴 לעזור לי לבדוק קרדיטים ב-Higgsfield</li>
+        <li>🟡 ליצור ערוץ יוטיוב "Uncle Sam's Farm"</li>
+        <li>🟡 Google Cloud Project + להפעיל YouTube API</li>
+        <li>🟢 לבחור תמונת פרופיל לערוץ</li>
       </ul>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.2rem;">
-      <h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:.5rem;">🤖 For Me (Shimon)</h3>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:.5rem;">🤖 בשבילי (Shimon)</h3>
       <ul style="list-style:none;font-size:.8rem;line-height:1.6;">
-        <li>1️⃣ Check Higgsfield balance</li>
-        <li>2️⃣ Create first Woola Reference Element</li>
-        <li>3️⃣ Write final S1E01 script</li>
-        <li>4️⃣ Generate 4 Woola scene images</li>
-        <li>5️⃣ Animate via Kling 3.0 + voice + music</li>
+        <li>1️⃣ לבדוק יתרה ב-Higgsfield</li>
+        <li>2️⃣ ליצור Reference Element ראשון של Woola</li>
+        <li>3️⃣ לכתוב תסריט סופי ל-S1E01</li>
+        <li>4️⃣ לייצר 4 תמונות סצנה של Woola</li>
+        <li>5️⃣ להנפיש + קריינות + מוזיקה + עריכה</li>
       </ul>
     </div>
   </div>
@@ -686,9 +594,9 @@
   <!-- ═══ FOOTER ═══ -->
   <div class="footer">
     <div>
-      🤖🕶️ <strong>Shimon the Robot</strong> &middot; Agent of <strong>Alon</strong><br>
-      <span class="small">Building a content creation network — one Short at a time 🚜🌈</span><br>
-      <span class="small" style="font-size:.6rem;margin-top:.5rem;display:inline-block;">Plan v2.0 · 20 June 2026</span>
+      🤖🕶️ <strong>Shimon the Robot</strong> &middot; סוכן של <strong>אלון</strong><br>
+      <span class="small">בונים רשת יצירת תוכן — שורטס אחד בכל פעם 🚜🌈</span><br>
+      <span class="small" style="font-size:.6rem;margin-top:.5rem;display:inline-block;">תוכנית v2.0 · 20 ביוני 2026 · 🇮🇱</span>
     </div>
   </div>
 
