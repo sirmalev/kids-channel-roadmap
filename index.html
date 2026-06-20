@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎬 Kids Channel Roadmap — Shimon 🤖🕶️</title>
+  <title>🚜 Uncle Sam's Farm — Master Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700;800;900&display=swap');
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0c0c1a;
-      --card: #13132b;
+      --bg: #0a0a18;
+      --card: #12122a;
+      --card2: #1a1a3a;
       --border: #2a2a5a;
       --pink: #ff4d94;
       --purple: #a855f7;
@@ -20,8 +22,14 @@
       --green: #34d399;
       --yellow: #facc15;
       --orange: #fb923c;
+      --red: #ef4444;
       --text: #e2e8f0;
       --muted: #94a3b8;
+      --woola: #f472b6;
+      --mooly: #a855f7;
+      --pip: #fb923c;
+      --bongo: #facc15;
+      --pingu: #22d3ee;
     }
 
     body {
@@ -32,489 +40,658 @@
       overflow-x: hidden;
     }
 
-    /* ─── Animated BG ─── */
-    .bg-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .bg-orb:nth-child(1) { width: 500px; height: 500px; background: var(--pink); top: -100px; left: -100px; animation: float1 12s ease-in-out infinite; }
-    .bg-orb:nth-child(2) { width: 400px; height: 400px; background: var(--blue); bottom: -80px; right: -80px; animation: float2 15s ease-in-out infinite; }
-    .bg-orb:nth-child(3) { width: 300px; height: 300px; background: var(--yellow); bottom: 40%; left: 10%; animation: float3 10s ease-in-out infinite; }
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-    @keyframes float1 {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(80px, 60px); }
+    /* ─── Floating Orbs ─── */
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(120px); opacity: .1; pointer-events: none; z-index: 0;
     }
-    @keyframes float2 {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(-60px, -80px); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(40px, -40px) scale(1.2); }
-    }
+    .orb:nth-child(1) { width: 500px; height: 500px; background: var(--pink); top: -150px; left: -150px; animation: drft1 14s ease-in-out infinite; }
+    .orb:nth-child(2) { width: 400px; height: 400px; background: var(--blue); bottom: -100px; right: -100px; animation: drft2 16s ease-in-out infinite; }
+    .orb:nth-child(3) { width: 300px; height: 300px; background: var(--yellow); top: 40%; left: 60%; animation: drft3 12s ease-in-out infinite; }
+    .orb:nth-child(4) { width: 250px; height: 250px; background: var(--purple); top: 70%; right: 80%; animation: drft4 18s ease-in-out infinite; }
+    @keyframes drft1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(100px,80px)} }
+    @keyframes drft2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-80px,-100px)} }
+    @keyframes drft3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(50px,-50px) scale(1.3)} }
+    @keyframes drft4 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-60px,40px)} }
 
-    /* ─── Layout ─── */
-    .container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem 4rem; position: relative; z-index: 1; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; position: relative; z-index: 1; }
 
-    /* ─── Hero ─── */
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,10,24,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .7rem 1.5rem; border-radius: 0 0 20px 20px;
+      display: flex; gap: .4rem; overflow-x: auto; flex-wrap: wrap; justify-content: center;
+    }
+    .nav a {
+      color: var(--muted); text-decoration: none; font-size: .72rem; font-weight: 500;
+      padding: .35rem .85rem; border-radius: 999px; transition: .3s; white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .nav a:hover { color: var(--text); background: rgba(255,255,255,.06); border-color: var(--border); }
+
+    /* ─── HERO ─── */
     .hero {
-      text-align: center;
-      padding: 3rem 0 2rem;
+      text-align: center; padding: 2.5rem 0 1.5rem; position: relative;
     }
-    .hero-emoji { font-size: 4rem; display: block; margin-bottom: 0.5rem; animation: bounce 2s ease-in-out infinite; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
-    }
+    .hero-emoji { font-size: 4.5rem; display: block; animation: pop 2s ease-in-out infinite; }
+    @keyframes pop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
     .hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--yellow), var(--orange), var(--pink), var(--purple), var(--blue));
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradient-shift 6s ease-in-out infinite;
+      font-size: clamp(2.4rem,6vw,4rem); font-weight: 900; margin-top: .3rem;
+      background: linear-gradient(135deg,var(--yellow),var(--orange),var(--pink),var(--purple),var(--cyan),var(--green));
+      background-size: 400% 400%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: grad 8s ease-in-out infinite;
     }
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--muted);
-      margin-top: 0.8rem;
-      line-height: 1.6;
-    }
-    .hero .tagline {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.4rem 1.2rem;
-      border-radius: 999px;
-      background: rgba(168, 85, 247, 0.15);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--purple);
+    @keyframes grad { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+    .hero .sub { color: var(--muted); font-size: 1rem; margin-top: .5rem; }
+    .hero .badge {
+      display: inline-block; margin-top: .8rem; padding: .35rem 1.2rem;
+      border-radius: 999px; background: rgba(168,85,247,.12); border: 1px solid rgba(168,85,247,.25);
+      font-size: .8rem; color: var(--purple); font-weight: 600;
     }
 
-    /* ─── Stats Bar ─── */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 0.75rem;
-      margin: 2rem 0 3rem;
+    /* ─── STATS ROW ─── */
+    .stats {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(130px,1fr)); gap: .7rem; margin: 1.5rem 0 2rem;
     }
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1rem 0.75rem;
-      text-align: center;
+    .stat {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 1rem .5rem; text-align: center; transition: .3s;
     }
-    .stat-card .num {
-      font-size: 1.6rem;
-      font-weight: 800;
-      display: block;
-    }
-    .stat-card .lbl {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.2rem;
-    }
-    .stat-card:nth-child(1) .num { color: var(--yellow); }
-    .stat-card:nth-child(2) .num { color: var(--cyan); }
-    .stat-card:nth-child(3) .num { color: var(--green); }
-    .stat-card:nth-child(4) .num { color: var(--pink); }
-    .stat-card:nth-child(5) .num { color: var(--purple); }
+    .stat:hover { transform: translateY(-3px); border-color: rgba(168,85,247,.3); }
+    .stat .num { font-size: 1.8rem; font-weight: 800; display: block; }
+    .stat .lbl { font-size: .7rem; color: var(--muted); margin-top: .2rem; }
+    .stat:nth-child(1) .num{color:var(--yellow)}
+    .stat:nth-child(2) .num{color:var(--cyan)}
+    .stat:nth-child(3) .num{color:var(--green)}
+    .stat:nth-child(4) .num{color:var(--pink)}
+    .stat:nth-child(5) .num{color:var(--purple)}
+    .stat:nth-child(6) .num{color:var(--orange)}
 
-    /* ─── Phase Timeline ─── */
-    .phases { position: relative; }
-    .phases::before {
-      content: '';
-      position: absolute;
-      right: 24px;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: linear-gradient(to bottom, var(--pink), var(--purple), var(--blue), var(--cyan), var(--green));
+    /* ─── SECTION TITLE ─── */
+    .sec-title {
+      font-size: 1.5rem; font-weight: 800; text-align: center; margin: 2.5rem 0 1.5rem;
+    }
+    .sec-title span { background: linear-gradient(135deg,var(--yellow),var(--pink)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ─── CHARACTER CARDS ─── */
+    .chars { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 1rem; }
+    .char {
+      background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 1.5rem 1rem; text-align: center;
+      transition: .4s; cursor: default; position: relative; overflow: hidden;
+    }
+    .char::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .char:nth-child(1)::before{background:var(--woola)}
+    .char:nth-child(2)::before{background:var(--mooly)}
+    .char:nth-child(3)::before{background:var(--pip)}
+    .char:nth-child(4)::before{background:var(--bongo)}
+    .char:nth-child(5)::before{background:var(--pingu)}
+    .char:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,.4); }
+    .char .emoji { font-size: 3rem; display: block; }
+    .char .name { font-size: 1.2rem; font-weight: 700; margin-top: .3rem; }
+    .char .title { font-size: .75rem; color: var(--muted); }
+    .char .teach { margin-top: .6rem; padding: .3rem .7rem; border-radius: 999px; font-size: .7rem; font-weight: 600; display: inline-block; }
+    .char:nth-child(1) .teach{background:rgba(244,114,182,.15);color:var(--woola)}
+    .char:nth-child(2) .teach{background:rgba(168,85,247,.15);color:var(--mooly)}
+    .char:nth-child(3) .teach{background:rgba(251,146,60,.15);color:var(--pip)}
+    .char:nth-child(4) .teach{background:rgba(250,204,21,.15);color:var(--bongo)}
+    .char:nth-child(5) .teach{background:rgba(34,211,238,.15);color:var(--pingu)}
+    .char .ps { font-size: .65rem; color: var(--muted); margin-top: .4rem; font-style: italic; }
+
+    /* ─── PIPELINE FLOW ─── */
+    .pipeline { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .4rem; margin: 1rem 0; }
+    .pipe-step {
+      display: flex; align-items: center; gap: .4rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: .5rem .85rem; font-size: .78rem; font-weight: 600; transition: .3s;
+    }
+    .pipe-step:hover { border-color: rgba(59,130,246,.4); transform: translateY(-2px); }
+    .pipe-step .ico { font-size: 1.2rem; }
+    .pipe-arrow { color: var(--muted); font-size: 1.2rem; }
+
+    /* ─── SHORTS TIMELINE ─── */
+    .shorts-grid {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: .8rem;
+    }
+    .short-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1rem 1.2rem; transition: .3s; border-right: 4px solid;
+    }
+    .short-card:nth-child(1){border-right-color:var(--woola)}
+    .short-card:nth-child(2){border-right-color:var(--mooly)}
+    .short-card:nth-child(3){border-right-color:var(--pip)}
+    .short-card:nth-child(4){border-right-color:var(--bongo)}
+    .short-card:nth-child(5){border-right-color:var(--pingu)}
+    .short-card:nth-child(6){border-right-color:var(--woola)}
+    .short-card:nth-child(7){border-right-color:var(--mooly)}
+    .short-card:nth-child(8){border-right-color:var(--pip)}
+    .short-card:nth-child(9){border-right-color:var(--bongo)}
+    .short-card:nth-child(10){border-right-color:var(--green)}
+    .short-card:nth-child(11){border-right-color:var(--woola)}
+    .short-card:nth-child(12){border-right-color:var(--mooly)}
+    .short-card:nth-child(13){border-right-color:var(--pip)}
+    .short-card:nth-child(14){border-right-color:var(--bongo)}
+    .short-card:nth-child(15){border-right-color:var(--yellow)}
+    .short-card:hover { transform: translateY(-3px); }
+    .short-card .num { font-size: .7rem; color: var(--muted); }
+    .short-card h4 { font-size: .92rem; font-weight: 700; margin: .15rem 0 .2rem; }
+    .short-card .meta { font-size: .72rem; color: var(--muted); display: flex; gap: .6rem; }
+    .short-card .meta .char-tag {
+      padding: .1rem .5rem; border-radius: 999px; font-size: .65rem; font-weight: 600;
+    }
+
+    /* ─── PSYCHOLOGY/FRAMEWORK ─── */
+    .psy-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); gap: .7rem; }
+    .psy-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.2rem 1rem; text-align: center; transition: .3s;
+    }
+    .psy-card:hover { border-color: rgba(34,211,238,.4); transform: translateY(-3px); }
+    .psy-card .num { font-size: 2rem; display: block; font-weight: 800; }
+    .psy-card .lbl { font-size: .78rem; font-weight: 600; margin-top: .3rem; }
+    .psy-card .desc { font-size: .68rem; color: var(--muted); margin-top: .3rem; line-height: 1.4; }
+    .psy-card:nth-child(1) .num{color:var(--pink)}
+    .psy-card:nth-child(2) .num{color:var(--purple)}
+    .psy-card:nth-child(3) .num{color:var(--blue)}
+    .psy-card:nth-child(4) .num{color:var(--cyan)}
+    .psy-card:nth-child(5) .num{color:var(--yellow)}
+
+    .age-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: .7rem; margin-top: 1rem; }
+    .age-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1rem; text-align: center; transition: .3s;
+    }
+    .age-card:hover { border-color: rgba(250,204,21,.3); }
+    .age-card .age { font-size: 1.3rem; font-weight: 800; }
+    .age-card .learn { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
+
+    /* ─── MILESTONES ─── */
+    .miles { display: grid; grid-template-columns: repeat(auto-fit,minmax(150px,1fr)); gap: .7rem; }
+    .mile {
+      background: var(--card); border-radius: 16px; border: 1px solid var(--border);
+      padding: 1rem; text-align: center; transition: .3s; position: relative; overflow: hidden;
+    }
+    .mile::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    }
+    .mile:nth-child(1)::after{background:var(--yellow)}
+    .mile:nth-child(2)::after{background:var(--green)}
+    .mile:nth-child(3)::after{background:var(--cyan)}
+    .mile:nth-child(4)::after{background:var(--blue)}
+    .mile:nth-child(5)::after{background:var(--purple)}
+    .mile:nth-child(6)::after{background:var(--pink)}
+    .mile:hover { transform: translateY(-3px); }
+    .mile .target-text { font-size: 1rem; font-weight: 700; }
+    .mile .when { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+
+    /* ─── TIMELINE ─── */
+    .tl { position: relative; padding-right: 2.5rem; }
+    .tl::before {
+      content: ''; position: absolute; right: 12px; top: 0; bottom: 0;
+      width: 3px; background: linear-gradient(to bottom, var(--pink), var(--purple), var(--blue), var(--green), var(--yellow));
       border-radius: 3px;
     }
-
-    .phase {
-      position: relative;
-      margin-bottom: 2.5rem;
-      padding-right: 4rem;
-    }
-    .phase:last-child { margin-bottom: 0; }
-
-    .phase-dot {
-      position: absolute;
-      right: 13px;
-      top: 8px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 3px solid var(--card);
+    .tl-item { position: relative; margin-bottom: 1.2rem; padding-right: 1rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; right: -20px; top: 4px;
+      width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--bg);
       z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
     }
-    .phase:nth-child(1) .phase-dot { background: var(--pink); }
-    .phase:nth-child(2) .phase-dot { background: var(--purple); }
-    .phase:nth-child(3) .phase-dot { background: var(--blue); }
-    .phase:nth-child(4) .phase-dot { background: var(--cyan); }
-    .phase:nth-child(5) .phase-dot { background: var(--green); }
+    .tl-item:nth-child(1) .tl-dot{background:var(--pink)}
+    .tl-item:nth-child(2) .tl-dot{background:var(--purple)}
+    .tl-item:nth-child(3) .tl-dot{background:var(--blue)}
+    .tl-item:nth-child(4) .tl-dot{background:var(--green)}
+    .tl-item:nth-child(5) .tl-dot{background:var(--yellow)}
+    .tl-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1rem 1.2rem; transition: .3s;
+    }
+    .tl-card:hover { border-color: rgba(168,85,247,.3); }
+    .tl-card h4 { font-size: .95rem; font-weight: 700; }
+    .tl-card p { font-size: .78rem; color: var(--muted); margin-top: .2rem; line-height: 1.5; }
 
-    .phase-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
+    /* ─── STRUCTURE BLOCK ─── */
+    .struct {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); gap: .5rem; margin: 1rem 0;
     }
-    .phase-card:hover {
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateX(-3px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    .struct-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: .6rem .5rem; text-align: center; font-size: .7rem;
     }
+    .struct-item .time { font-weight: 700; color: var(--cyan); font-size: .8rem; display: block; }
+    .struct-item .label { color: var(--muted); margin-top: .15rem; }
 
-    .phase-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
+    /* ─── TOOLS ─── */
+    .tools { display: grid; grid-template-columns: repeat(auto-fit,minmax(120px,1fr)); gap: .6rem; }
+    .tool {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: .8rem .5rem; text-align: center; transition: .3s; text-decoration: none; color: var(--text);
     }
-    .phase-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .phase:nth-child(1) .phase-icon { background: rgba(255,77,148,0.15); }
-    .phase:nth-child(2) .phase-icon { background: rgba(168,85,247,0.15); }
-    .phase:nth-child(3) .phase-icon { background: rgba(59,130,246,0.15); }
-    .phase:nth-child(4) .phase-icon { background: rgba(34,211,238,0.15); }
-    .phase:nth-child(5) .phase-icon { background: rgba(52,211,153,0.15); }
+    .tool:hover { border-color: rgba(59,130,246,.4); transform: translateY(-3px); }
+    .tool .emoji { font-size: 1.7rem; display: block; }
+    .tool .name { font-size: .7rem; font-weight: 600; margin-top: .2rem; }
 
-    .phase-title {
-      font-size: 1.2rem;
-      font-weight: 700;
+    /* ─── GROWTH ─── */
+    .growth-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: .7rem; }
+    .growth-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1rem; transition: .3s;
     }
-    .phase-subtitle {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
+    .growth-item:hover { border-color: rgba(52,211,153,.3); }
+    .growth-item h4 { font-size: .85rem; font-weight: 700; }
+    .growth-item p { font-size: .72rem; color: var(--muted); margin-top: .2rem; line-height: 1.5; }
 
-    /* ─── Tasks ─── */
-    .tasks { list-style: none; }
-    .tasks li {
-      position: relative;
-      padding: 0.65rem 1.8rem 0.65rem 0;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+    /* ─── KPI ─── */
+    .kpi-table { width: 100%; border-collapse: collapse; margin-top: .8rem; }
+    .kpi-table th, .kpi-table td {
+      padding: .6rem .5rem; text-align: center; font-size: .75rem;
+      border-bottom: 1px solid var(--border);
     }
-    .tasks li:last-child { border-bottom: none; }
-    .tasks li::before {
-      content: '✦';
-      position: absolute;
-      right: 0;
-      top: 0.65rem;
-      font-size: 0.7rem;
-    }
-    .phase:nth-child(1) .tasks li::before { color: var(--pink); }
-    .phase:nth-child(2) .tasks li::before { color: var(--purple); }
-    .phase:nth-child(3) .tasks li::before { color: var(--blue); }
-    .phase:nth-child(4) .tasks li::before { color: var(--cyan); }
-    .phase:nth-child(5) .tasks li::before { color: var(--green); }
+    .kpi-table th { color: var(--muted); font-weight: 600; }
+    .kpi-table td:first-child { text-align: right; font-weight: 600; }
+    .kpi-table tr:hover td { background: rgba(255,255,255,.02); }
 
-    .task-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      margin-right: 0.3rem;
-    }
-    .tag-idea { background: rgba(251,191,36,0.15); color: var(--yellow); }
-    .tag-build { background: rgba(168,85,247,0.15); color: var(--purple); }
-    .tag-code { background: rgba(59,130,246,0.15); color: var(--blue); }
-    .tag-later { background: rgba(148,163,184,0.15); color: var(--muted); }
-    .tag-urgent { background: rgba(255,77,148,0.15); color: var(--pink); }
-
-    /* ─── Tools Grid ─── */
-    .tools-section { margin: 3rem 0; }
-    .tools-section h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      text-align: center;
-    }
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 0.75rem;
-    }
-    .tool-item {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1rem 0.75rem;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .tool-item:hover {
-      border-color: rgba(59,130,246,0.4);
-      transform: translateY(-3px);
-    }
-    .tool-item .emoji { font-size: 2rem; display: block; margin-bottom: 0.3rem; }
-    .tool-item .name { font-size: 0.8rem; font-weight: 600; }
-    .tool-item .desc { font-size: 0.65rem; color: var(--muted); margin-top: 0.15rem; }
-
-    /* ─── Flow ─── */
-    .flow-section { margin: 3rem 0; }
-    .flow-section h2 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1.2rem;
-      text-align: center;
-    }
-    .flow {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .flow-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 0.6rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .flow-step .emoji { font-size: 1.2rem; }
-    .flow-arrow {
-      font-size: 1.3rem;
-      color: var(--muted);
-    }
-    .flow-step.shimon { border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.08); }
-    .flow-step.you { border-color: rgba(251,191,36,0.4); background: rgba(251,191,36,0.08); }
-    .flow-step.ai { border-color: rgba(34,211,238,0.4); background: rgba(34,211,238,0.08); }
-
-    /* ─── Footer ─── */
+    /* ─── FOOTER ─── */
     .footer {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem;
+      text-align: center; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 2.5rem;
     }
-    .footer .signature {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .footer .signature strong { color: var(--purple); }
+    .footer strong { color: var(--purple); }
+    .footer .small { font-size: .7rem; color: var(--muted); margin-top: .3rem; }
 
-    /* ─── Responsive ─── */
-    @media (max-width: 600px) {
-      .container { padding: 1.5rem 1rem 3rem; }
-      .phase { padding-right: 3rem; }
-      .phases::before { right: 16px; }
-      .phase-dot { right: 7px; width: 20px; height: 20px; }
-      .flow { flex-direction: column; }
-      .flow-arrow { transform: rotate(90deg); }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width:640px) {
+      .container { padding: 1rem; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .chars { grid-template-columns: repeat(2,1fr); }
+      .shorts-grid { grid-template-columns: 1fr; }
+      .pipeline { flex-direction: column; }
+      .pipe-arrow { transform: rotate(90deg); }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-orb"></div>
-  <div class="bg-orb"></div>
-  <div class="bg-orb"></div>
+<div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
 
-  <div class="container">
+<div class="nav">
+  <a href="#characters">🐾 Characters</a>
+  <a href="#psychology">🧠 Psychology</a>
+  <a href="#structure">🎬 Format</a>
+  <a href="#season1">📺 Season 1</a>
+  <a href="#pipeline">⚙️ Pipeline</a>
+  <a href="#milestones">🎯 Goals</a>
+  <a href="#tools">🧰 Tools</a>
+  <a href="#growth">📈 Growth</a>
+  <a href="#risks">⚠️ Risks</a>
+</div>
 
-    <!-- ─── Hero ─── -->
-    <div class="hero">
-      <span class="hero-emoji">🎬</span>
-      <h1>Kids Cartoon Shorts Roadmap</h1>
-      <p>ערוץ יוטיוב שורטס מצוירים — מלמד, משעשע, צבעוני<br>לגילאי 2–4 🤖🎨</p>
-      <span class="tagline">🚀 בנה על־ידי Shimon &middot; סוכן AI שלך</span>
-    </div>
+<div class="container">
 
-    <!-- ─── Stats ─── -->
-    <div class="stats-bar">
-      <div class="stat-card"><span class="num">5</span><span class="lbl">שלבים</span></div>
-      <div class="stat-card"><span class="num">7</span><span class="lbl">כלים משולבים</span></div>
-      <div class="stat-card"><span class="num">1</span><span class="lbl">דקה / שורטס</span></div>
-      <div class="stat-card"><span class="num">6</span><span class="lbl">שורטס / יום</span></div>
-      <div class="stat-card"><span class="num">∞</span><span class="lbl">פוטנציאל</span></div>
-    </div>
-
-    <!-- ─── Phases ─── -->
-    <div class="phases">
-
-      <!-- Phase 1 -->
-      <div class="phase">
-        <div class="phase-dot">1</div>
-        <div class="phase-card">
-          <div class="phase-header">
-            <div class="phase-icon">🎨</div>
-            <div>
-              <div class="phase-title">עיצוב וקונספט</div>
-              <div class="phase-subtitle">להמציא את העולם — אתה + אני</div>
-            </div>
-          </div>
-          <ul class="tasks">
-            <li><span class="task-tag tag-idea">קונספט</span> נושא מרכזי — חיות, צבעים, מספרים, או סיפור?</li>
-            <li><span class="task-tag tag-idea">דמויות</span> דמות/ות ראשיות — שם, מראה, אישיות</li>
-            <li><span class="task-tag tag-idea">סטייל</span> סגנון ויזואלי — 2D רך, 3D צעצועי, פלאשק</li>
-            <li><span class="task-tag tag-idea">פלטה</span> לוח צבעים — בהיר, מנוגד, מושך קטנטנים</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Phase 2 -->
-      <div class="phase">
-        <div class="phase-dot">2</div>
-        <div class="phase-card">
-          <div class="phase-header">
-            <div class="phase-icon">⚙️</div>
-            <div>
-              <div class="phase-title">צינור הפקה — AI</div>
-              <div class="phase-subtitle">שמעון מייצר את כל חומרי הגלם</div>
-            </div>
-          </div>
-          <ul class="tasks">
-            <li><span class="task-tag tag-build">References</span> יצירת דמויות כ-Reference Elements ב-Higgsfield לחזרתיות מושלמת</li>
-            <li><span class="task-tag tag-build">תמונות</span> יצירת סטים של סצנות (Nano Banana Pro / GPT Image 2)</li>
-            <li><span class="task-tag tag-build">אנימציה</span> הנפשת סצנות עם Kling 3.0 / Seedance 2.0</li>
-            <li><span class="task-tag tag-build">קריינות</span> הקלטת טקסטים בקול ילדותי/חם דרך ElevenLabs</li>
-            <li><span class="task-tag tag-build">מוזיקה</span> יצירת מנגינות קליטות — music_generate</li>
-            <li><span class="task-tag tag-build">אפקטים</span> סאונד אפקטים כיפיים</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Phase 3 -->
-      <div class="phase">
-        <div class="phase-dot">3</div>
-        <div class="phase-card">
-          <div class="phase-header">
-            <div class="phase-icon">✂️</div>
-            <div>
-              <div class="phase-title">עריכה סופית</div>
-              <div class="phase-subtitle">מחברים הכל לקליפ מוגמר</div>
-            </div>
-          </div>
-          <ul class="tasks">
-            <li><span class="task-tag tag-urgent">⬇️ הורד</span> <strong>Palmier Pro</strong> מ-palmier.io (macOS, חינם)</li>
-            <li><span class="task-tag tag-code">חיבור</span> לחבר MCP — אני אראה את הטיימליין ואערוך</li>
-            <li><span class="task-tag tag-code">עריכה</span> גזירה, סידור, טרנזישנים, טקסטים, טיימינג — אני דרך MCP</li>
-            <li><span class="task-tag tag-build">ייצוא</span> MP4 (H.264) מוכן לפרסום</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Phase 4 -->
-      <div class="phase">
-        <div class="phase-dot">4</div>
-        <div class="phase-card">
-          <div class="phase-header">
-            <div class="phase-icon">📡</div>
-            <div>
-              <div class="phase-title">פרסום אוטומטי</div>
-              <div class="phase-subtitle">YouTube API — שורטס עף למעלה</div>
-            </div>
-          </div>
-          <ul class="tasks">
-            <li><span class="task-tag tag-urgent">⬆️ הרשמה</span> Google Cloud Console — פרויקט חדש</li>
-            <li><span class="task-tag tag-code">OAuth</span> הרשאת גישה — אני אגיד לך מה ללחוץ</li>
-            <li><span class="task-tag tag-code">אוטומציה</span> סקריפט העלאה אוטומטי via YouTube API</li>
-            <li><span class="task-tag tag-code">לוח זמנים</span> קביעת תדירות פרסום (1–3 שורטס ליום)</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Phase 5 -->
-      <div class="phase">
-        <div class="phase-dot">5</div>
-        <div class="phase-card">
-          <div class="phase-header">
-            <div class="phase-icon">🚀</div>
-            <div>
-              <div class="phase-title">צמיחה והתרחבות</div>
-              <div class="phase-subtitle">להפוך את זה למכונה</div>
-            </div>
-          </div>
-          <ul class="tasks">
-            <li><span class="task-tag tag-later">הרחבה</span> טיקטוק, אינסטגרים Reels במקביל</li>
-            <li><span class="task-tag tag-later">ניתוח</span> אנליטיקס — מה עובד ומה לא</li>
-            <li><span class="task-tag tag-later">עונות</span> סדרות בתוך הערוץ</li>
-            <li><span class="task-tag tag-later">ליין</span> דמויות חדשות, נושאים חדשים, שיתופי פעולה</li>
-            <li><span class="task-tag tag-later">מנטיזציה</span> כשתהיה מספיק תנועה</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ─── Integration Flow ─── -->
-    <div class="flow-section">
-      <h2>⚡ איך עובד השילוב</h2>
-      <div class="flow">
-        <div class="flow-step you"><span class="emoji">🧑‍💻</span> אתה — רעיונות</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step shimon"><span class="emoji">🤖</span> Shimon — תוכן + MCP</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step ai"><span class="emoji">🎬</span> Palmier Pro — עריכה</div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-step you"><span class="emoji">📺</span> YouTube Shorts</div>
-      </div>
-      <p style="text-align:center; color: var(--muted); font-size: 0.8rem; margin-top: 0.8rem;">
-        🤖 Shimon יוצר &nbsp;·&nbsp; 🎬 Palmier עורך &nbsp;·&nbsp; 📡 YouTube מפרסם
-      </p>
-    </div>
-
-    <!-- ─── Tools ─── -->
-    <div class="tools-section">
-      <h2>🧰 ארגז הכלים</h2>
-      <div class="tools-grid">
-        <div class="tool-item"><span class="emoji">🖼️</span><span class="name">Higgsfield</span><span class="desc">תמונות + Reference Elements</span></div>
-        <div class="tool-item"><span class="emoji">🎞️</span><span class="name">Kling 3.0</span><span class="desc">אנימציה מתמונה</span></div>
-        <div class="tool-item"><span class="emoji">🎙️</span><span class="name">ElevenLabs</span><span class="desc">קריינות מקצועית</span></div>
-        <div class="tool-item"><span class="emoji">🎵</span><span class="name">music_generate</span><span class="desc">מנגינות מקוריות</span></div>
-        <div class="tool-item"><span class="emoji">✂️</span><span class="name">Palmier Pro</span><span class="desc">עורך וידאו AI + MCP</span></div>
-        <div class="tool-item"><span class="emoji">💻</span><span class="name">ffmpeg</span><span class="desc">עריכות בסיסיות גיבוי</span></div>
-        <div class="tool-item"><span class="emoji">☁️</span><span class="name">YouTube API</span><span class="desc">העלאה אוטומטית</span></div>
-      </div>
-    </div>
-
-    <!-- ─── Footer ─── -->
-    <div class="footer">
-      <div class="signature">
-        🤖🕶️ <strong>Shimon the Robot</strong> — סוכן AI נאמן של אלון<br>
-        <span style="font-size: 0.75rem; color: var(--muted);">— Building a content creation network, one Shorts at a time —</span>
-      </div>
-    </div>
-
+  <!-- ═══ HERO ═══ -->
+  <div class="hero">
+    <span class="hero-emoji">🚜</span>
+    <h1>Uncle Sam's Farm</h1>
+    <p class="sub">A farm where animals learn, laugh, and grow — and so do the kids watching 🐑🌈</p>
+    <span class="badge">🤖 Built by Shimon &middot; Agent of Alon &middot; 2026</span>
   </div>
 
+  <!-- ═══ STATS ═══ -->
+  <div class="stats">
+    <div class="stat"><span class="num">5</span><span class="lbl">Characters</span></div>
+    <div class="stat"><span class="num">15</span><span class="lbl">Season 1 Shorts</span></div>
+    <div class="stat"><span class="num">60s</span><span class="lbl">Per Short</span></div>
+    <div class="stat"><span class="num">7</span><span class="lbl">Tools</span></div>
+    <div class="stat"><span class="num">13</span><span class="lbl">Plan Sections</span></div>
+    <div class="stat"><span class="num">∞</span><span class="lbl">Potential 🚀</span></div>
+  </div>
+
+  <!-- ═══ THE HOOK / PSYCHOLOGY ═══ -->
+  <h2 class="sec-title" id="psychology"><span>🧠 The Psychology</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Why kids ages 2-6 watch, learn, and come back</p>
+
+  <div class="psy-grid">
+    <div class="psy-card"><span class="num">1</span><span class="lbl">Character Love</span><span class="desc">Kids need a "friend" on screen — Woola becomes a trusted companion</span></div>
+    <div class="psy-card"><span class="num">2</span><span class="lbl">Repetition</span><span class="desc">Same structure every Short = comfort. Kids feel safe knowing what's next</span></div>
+    <div class="psy-card"><span class="num">3</span><span class="lbl">Color + Sound</span><span class="desc">Bright visuals + catchy tunes trigger dopamine. Brains LOVE it</span></div>
+    <div class="psy-card"><span class="num">4</span><span class="lbl">Direct Address</span><span class="desc">"Can YOU say RED?" turns passive watching into active participation</span></div>
+    <div class="psy-card"><span class="num">5</span><span class="lbl">Surprise</span><span class="desc">1 "wow moment" per Short — keeps them coming back for more</span></div>
+  </div>
+
+  <h3 style="font-size:.95rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📈 Developmental Learning Arc</h3>
+  <div class="age-grid">
+    <div class="age-card"><div class="age" style="color:var(--green)">2-3</div><div class="learn">Colors, Count 1-3, Circle, Animal Sounds</div></div>
+    <div class="age-card"><div class="age" style="color:var(--yellow)">3-4</div><div class="learn">More Colors, Count 1-10, Square/Triangle, ABC basics, Opposites</div></div>
+    <div class="age-card"><div class="age" style="color:var(--orange)">4-5</div><div class="learn">A-Z, Count 1-20, Patterns, Sorting, Emotions</div></div>
+    <div class="age-card"><div class="age" style="color:var(--pink)">5-6</div><div class="learn">Phonics, Simple Addition, Days/Weather, Sequencing</div></div>
+  </div>
+
+  <!-- ═══ CHARACTER CARDS ═══ -->
+  <h2 class="sec-title" id="characters"><span>🐾 The Characters</span></h2>
+
+  <div class="chars">
+    <div class="char">
+      <span class="emoji">🐑</span>
+      <div class="name" style="color:var(--woola)">Woola</div>
+      <div class="title">The Rainbow Sheep</div>
+      <div class="teach">🌈 Colors</div>
+      <div class="ps">"Baa-lue!" — Changes color when she touches things</div>
+    </div>
+    <div class="char">
+      <span class="emoji">🐄</span>
+      <div class="name" style="color:var(--mooly)">Mooly</div>
+      <div class="title">The Wise Cow</div>
+      <div class="teach">🔢 Numbers</div>
+      <div class="ps">"Moo-velous!" — Gentle, patient, motherly</div>
+    </div>
+    <div class="char">
+      <span class="emoji">🐷</span>
+      <div class="name" style="color:var(--pip)">Pip</div>
+      <div class="title">The Silly Pig</div>
+      <div class="teach">⭕ Shapes</div>
+      <div class="ps">"Oink-tastic!" — Clumsy, hungry, comic relief</div>
+    </div>
+    <div class="char">
+      <span class="emoji">🐒</span>
+      <div class="name" style="color:var(--bongo)">Bongo</div>
+      <div class="title">The Rescue Monkey</div>
+      <div class="teach">🔤 ABC</div>
+      <div class="ps">"Ooh! A-B-C!" — Escaped circus, high energy</div>
+    </div>
+    <div class="char">
+      <span class="emoji">🐧</span>
+      <div class="name" style="color:var(--pingu)">Pingu</div>
+      <div class="title">The Lost Penguin</div>
+      <div class="teach">↔️ Opposites</div>
+      <div class="ps">"...Honk." — Deadpan, waddles, confused by farm life</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:.5rem 0;">
+    <span style="display:inline-block;padding:.3rem 1rem;border-radius:999px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);font-size:.75rem;color:var(--muted);">
+      👨‍🌾 Uncle Sam — The unseen narrator (hands + voice only, like Teletubbies)
+    </span>
+  </div>
+
+  <!-- ═══ SHORTS FORMAT TIMELINE ═══ -->
+  <h2 class="sec-title" id="structure"><span>🎬 The Golden Format</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">Every Short = exact same structure. Kids learn to expect it.</p>
+
+  <div class="struct">
+    <div class="struct-item"><span class="time">0:00</span><span class="label">🛎️ Bell + Good Morning</span><span class="label" style="font-size:.6rem;color:var(--muted)">Hook — familiar start</span></div>
+    <div class="struct-item"><span class="time">0:05</span><span class="label">📋 Topic Intro</span><span class="label" style="font-size:.6rem;color:var(--muted)">Setup — what we learn</span></div>
+    <div class="struct-item"><span class="time">0:10</span><span class="label">👩‍🏫 3 Examples</span><span class="label" style="font-size:.6rem;color:var(--muted)">Teaching — "Say RED!"</span></div>
+    <div class="struct-item"><span class="time">0:35</span><span class="label">🔄 Review</span><span class="label" style="font-size:.6rem;color:var(--muted)">Reinforcement together</span></div>
+    <div class="struct-item"><span class="time">0:45</span><span class="label">🎉 Celebration + Bye</span><span class="label" style="font-size:.6rem;color:var(--muted)">Reward — dopamine hit</span></div>
+    <div class="struct-item"><span class="time">0:55</span><span class="label">🔔 Subscribe</span><span class="label" style="font-size:.6rem;color:var(--muted)">CTA + brand</span></div>
+  </div>
+
+  <!-- ═══ SEASON 1 ═══ -->
+  <h2 class="sec-title" id="season1"><span>📺 Season 1 — "First Steps"</span></h2>
+  <p style="text-align:center;color:var(--muted);font-size:.85rem;margin-bottom:1rem;">15 Shorts launching the channel. One topic per Short.</p>
+
+  <div class="shorts-grid">
+    <div class="short-card">
+      <div class="num">S1E01</div>
+      <h4>🌈 Woola's Rainbow</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Red, Blue, Yellow</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E02</div>
+      <h4>🔢 Mooly's Apples</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1, 2, 3</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E03</div>
+      <h4>⭕ Pip Meets Circle</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Circle</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E04</div>
+      <h4>🔤 Bongo's ABC Dance</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> A, B, C</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E05</div>
+      <h4>🥶 Pingu's Hot & Cold</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(34,211,238,.15);color:var(--pingu)">Pingu</span> Opposites</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E06</div>
+      <h4>🌿 Woola Green & Orange</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Green, Orange</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E07</div>
+      <h4>5️⃣ Mooly Counts to 5</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly</span> 1-5</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E08</div>
+      <h4>🟧 Pip Loves Squares</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Square</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E09</div>
+      <h4>📝 Bongo D-E-F</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> D, E, F</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E10</div>
+      <h4>🐄🐧 Big & Small</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(52,211,153,.15);color:var(--green)">Mooly+Pingu</span> Opposites</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E11</div>
+      <h4>💜 Woola's Purple Day</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(244,114,182,.15);color:var(--woola)">Woola</span> Purple</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E12</div>
+      <h4>🥚 Mooly's Eggs</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(168,85,247,.15);color:var(--mooly)">Mooly+Pip</span> 1-5 Review</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E13</div>
+      <h4>🔺 Pip's Triangle</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(251,146,60,.15);color:var(--pip)">Pip</span> Triangle</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E14</div>
+      <h4>🎵 Bongo G-H-I</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--bongo)">Bongo</span> G, H, I</div>
+    </div>
+    <div class="short-card">
+      <div class="num">S1E15</div>
+      <h4>🎉 Color Party!</h4>
+      <div class="meta"><span class="char-tag" style="background:rgba(250,204,21,.15);color:var(--yellow)">All</span> Season Finale</div>
+    </div>
+  </div>
+
+  <!-- ═══ PRODUCTION PIPELINE ═══ -->
+  <h2 class="sec-title" id="pipeline"><span>⚙️ Production Pipeline</span></h2>
+
+  <div class="pipeline">
+    <div class="pipe-step"><span class="ico">✍️</span> Script</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">🖼️</span> Images</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">🎬</span> Animate</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">🎙️</span> Voiceover</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">🎵</span> Music</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">✂️</span> Edit</div>
+    <span class="pipe-arrow">→</span>
+    <div class="pipe-step"><span class="ico">📡</span> Upload</div>
+  </div>
+
+  <div class="pipeline" style="margin-top:.5rem;">
+    <div class="pipe-step" style="font-size:.7rem;border-color:transparent;background:transparent;"><span class="ico">📊</span> <span style="color:var(--muted);">~40 min / Short · Batch 10 Shorts in ~5 hours</span></div>
+  </div>
+
+  <h3 style="font-size:.9rem;font-weight:600;text-align:center;margin:1.2rem 0 .6rem;color:var(--muted);">📦 Per-Short Breakdown</h3>
+  <div class="struct">
+    <div class="struct-item"><span class="time" style="color:var(--pink)">10m</span><span class="label">Script</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--purple)">5m</span><span class="label">Images</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--blue)">20m</span><span class="label">Animation</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--cyan)">2m</span><span class="label">Voiceover</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--green)">1m</span><span class="label">Music</span></div>
+    <div class="struct-item"><span class="time" style="color:var(--yellow)">8m</span><span class="label">Edit + Export</span></div>
+  </div>
+
+  <!-- ═══ MILESTONES ═══ -->
+  <h2 class="sec-title" id="milestones"><span>🎯 Milestones & Goals</span></h2>
+
+  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:0 0 .7rem;color:var(--muted);">🚩 Launch Milestones</h3>
+  <div class="miles">
+    <div class="mile"><div class="target-text">📺 10 Shorts</div><div class="when">Day 11 — Channel Alive</div></div>
+    <div class="mile"><div class="target-text">👀 1K Views</div><div class="when">Month 1 — Early Traction</div></div>
+    <div class="mile"><div class="target-text">50 🧑‍🤝‍🧑</div><div class="when">Month 1 — Early Community</div></div>
+    <div class="mile"><div class="target-text">📈 10K Views</div><div class="when">Month 3 — Algorithm Traction</div></div>
+    <div class="mile"><div class="target-text">🌟 1K Subs</div><div class="when">Month 6 — Monetization!</div></div>
+    <div class="mile"><div class="target-text">🚀 100K Views</div><div class="when">Month 9 — Viral Potential</div></div>
+  </div>
+
+  <h3 style="font-size:.85rem;font-weight:600;text-align:center;margin:1.2rem 0 .5rem;color:var(--muted);">📊 KPI Targets</h3>
+
+  <div style="overflow-x:auto;">
+    <table class="kpi-table">
+      <thead><tr><th>KPI</th><th>Month 1</th><th>Month 3</th><th>Month 6</th><th>Year 1</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--pink)">Shorts Published</td><td>15</td><td>60</td><td>150</td><td>365+</td></tr>
+        <tr><td style="color:var(--cyan)">Total Views</td><td>1K</td><td>10K</td><td>100K</td><td>1M+</td></tr>
+        <tr><td style="color:var(--green)">Subscribers</td><td>50</td><td>300</td><td>1,000</td><td>10K+</td></tr>
+        <tr><td style="color:var(--yellow)">Avg Retention</td><td>60%</td><td>70%</td><td>75%</td><td>80%+</td></tr>
+        <tr><td style="color:var(--purple)">New Subs/Day</td><td>2</td><td>10</td><td>30</td><td>100+</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ TIMELINE ═══ -->
+  <h2 class="sec-title"><span>🗓️ Execution Timeline</span></h2>
+
+  <div class="tl">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h4>Week 1 · Foundation 🏗️</h4>
+        <p>Design all 5 characters as Higgsfield Reference Elements · Set up YouTube API · Choose Uncle Sam's voice on ElevenLabs · Write scripts for first 3 Shorts</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h4>Week 2 · Pilot 🎬</h4>
+        <p>Produce S1E01 "Woola's Rainbow" (images + animation + voice + music + edit) · Upload to YouTube · Analyze first results</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h4>Week 3-4 · Season 1 🚀</h4>
+        <p>Batch produce S1E02 through S1E15 · Publish 1 Short/day minimum · A/B test titles, intros, timing</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h4>Month 2 · Optimize 🔧</h4>
+        <p>Review analytics — double down on best topics · Launch Season 2 · Expand to TikTok/Instagram</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <h4>Month 6+ · Scale 📈</h4>
+        <p>Monetization · Consistency → Algorithm reward · More complex topics · Community building</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TOOLS ═══ -->
+  <h2 class="sec-title" id="tools"><span>🧰 Tool Stack</span></h2>
+  <div class="tools">
+    <div class="tool"><span class="emoji">🖼️</span><span class="name">Higgsfield</span><span class="name" style="font-weight:400;color:var(--muted)">Images + Animation</span></div>
+    <div class="tool"><span class="emoji">🎬</span><span class="name">Kling 3.0</span><span class="name" style="font-weight:400;color:var(--muted)">Image-to-Video</span></div>
+    <div class="tool"><span class="emoji">🎙️</span><span class="name">ElevenLabs</span><span class="name" style="font-weight:400;color:var(--muted)">Voiceover</span></div>
+    <div class="tool"><span class="emoji">🎵</span><span class="name">music_generate</span><span class="name" style="font-weight:400;color:var(--muted)">Background Music</span></div>
+    <div class="tool"><span class="emoji">✂️</span><span class="name">ffmpeg</span><span class="name" style="font-weight:400;color:var(--muted)">Editing + Exports</span></div>
+    <div class="tool"><span class="emoji">☁️</span><span class="name">YouTube API</span><span class="name" style="font-weight:400;color:var(--muted)">Auto-Upload</span></div>
+    <div class="tool"><span class="emoji">📝</span><span class="name">PLAN.md</span><span class="name" style="font-weight:400;color:var(--muted)">GitHub</span></div>
+  </div>
+
+  <!-- ═══ GROWTH ═══ -->
+  <h2 class="sec-title" id="growth"><span>📈 Growth Engines</span></h2>
+
+  <div class="growth-grid">
+    <div class="growth-item"><h4 style="color:var(--pink)">🎬 Shorts Feed</h4><p>Let the YouTube algorithm do the heavy lifting — kids content has high natural shareability</p></div>
+    <div class="growth-item"><h4 style="color:var(--purple)">🔄 Cross-Platform</h4><p>Repurpose every Short for TikTok Reels + Instagram Reels — 3 platforms, 1 production</p></div>
+    <div class="growth-item"><h4 style="color:var(--blue)">👨‍👩‍👧 Parent Communities</h4><p>Reddit r/Parenting, Facebook groups — parents actively share educational content they trust</p></div>
+    <div class="growth-item"><h4 style="color:var(--cyan)">🏷️ Hashtags</h4><p>#KidsLearning #ToddlerLife #EducationalVideos #ParentingTips — reach beyond subs</p></div>
+    <div class="growth-item"><h4 style="color:var(--green)">📋 Playlists</h4><p>"Watch All Shorts" playlist keeps kids watching sequentially → session time + retention</p></div>
+    <div class="growth-item"><h4 style="color:var(--yellow)">💬 Engagement</h4><p>Reply as Uncle Sam: "Thanks for watching, little learner! What's YOUR favorite color?"</p></div>
+  </div>
+
+  <!-- ═══ RISKS ═══ -->
+  <h2 class="sec-title" id="risks"><span>⚠️ Risk Management</span></h2>
+
+  <div style="overflow-x:auto;">
+    <table class="kpi-table">
+      <thead><tr><th>Risk</th><th>P</th><th>I</th><th>Mitigation</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--pink)">COPPA Compliance</td><td>⚡</td><td>⚡⚡⚡</td><td>Mark ALL as "Made for Kids" — no comments, safe harbor</td></tr>
+        <tr><td style="color:var(--purple)">Copyright Claims</td><td>⚡</td><td>⚡⚡</td><td>music_generate = original. No third-party music ever</td></tr>
+        <tr><td style="color:var(--blue)">Higgsfield Credits</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>Check balance before each batch. Buy pack if low</td></tr>
+        <tr><td style="color:var(--cyan)">Character Inconsistency</td><td>⚡⚡</td><td>⚡⚡</td><td>Reference Elements + test 3 generations before locking</td></tr>
+        <tr><td style="color:var(--green)">Swipe Rate > 50%</td><td>⚡⚡</td><td>⚡⚡⚡</td><td>A/B test hooks in first 3 seconds. Change intro</td></tr>
+        <tr><td style="color:var(--yellow)">YouTube Demonetization</td><td>⚡</td><td>⚡⚡</td><td>Kids content = different rules. Plan for alternative revenue</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ IMMEDIATE NEXT STEPS ═══ -->
+  <h2 class="sec-title"><span>✅ Immediate Next Steps</span></h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.2rem;">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--yellow);margin-bottom:.5rem;">🧑‍🌾 For You (Alon)</h3>
+      <ul style="list-style:none;font-size:.8rem;line-height:1.6;">
+        <li>🔴 Test ElevenLabs voice (Adam for Uncle Sam)</li>
+        <li>🔴 Help me check Higgsfield credits</li>
+        <li>🟡 Create YouTube channel "Uncle Sam's Farm"</li>
+        <li>🟡 Google Cloud Project + enable YouTube API</li>
+        <li>🟢 Choose a channel profile picture</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:1.2rem;">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--purple);margin-bottom:.5rem;">🤖 For Me (Shimon)</h3>
+      <ul style="list-style:none;font-size:.8rem;line-height:1.6;">
+        <li>1️⃣ Check Higgsfield balance</li>
+        <li>2️⃣ Create first Woola Reference Element</li>
+        <li>3️⃣ Write final S1E01 script</li>
+        <li>4️⃣ Generate 4 Woola scene images</li>
+        <li>5️⃣ Animate via Kling 3.0 + voice + music</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <div class="footer">
+    <div>
+      🤖🕶️ <strong>Shimon the Robot</strong> &middot; Agent of <strong>Alon</strong><br>
+      <span class="small">Building a content creation network — one Short at a time 🚜🌈</span><br>
+      <span class="small" style="font-size:.6rem;margin-top:.5rem;display:inline-block;">Plan v2.0 · 20 June 2026</span>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>
